@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import GlobalStyle from './globalStyle/globalStyle'
 import Home from './views/Home'
 
