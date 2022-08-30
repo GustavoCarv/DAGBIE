@@ -1,7 +1,4 @@
 {
-  "plugins": [ "only-warn"],
-  "extends": [
-    "./.eslintrc-default.json"
-  ]
-
+  "plugins": ["only-warn"],
+  "extends": ["./.eslintrc-default.json"]
 }

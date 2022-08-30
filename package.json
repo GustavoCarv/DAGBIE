@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint src --ext ts,tsx --no-eslintrc --config .eslintrc-default",
+    "lint": "eslint src --ext ts,tsx --no-eslintrc --config .eslintrc-default.json",
     "lint:fix": "yarn lint --fix",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "prepare": "husky install"
@@ -23,6 +23,8 @@
     "extends": "./.eslintrc.json"
   },
   "devDependencies": {
+    "@commitlint/cli": "17.1.2",
+    "@commitlint/config-conventional": "17.1.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
