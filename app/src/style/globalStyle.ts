@@ -30,8 +30,12 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
+html {
+  @media(max-width: 720px) {font-size: 87.5%;}
+  @media(max-width: 1024px) {font-size: 93.75%;}
+}
+
 body {
-  min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
@@ -57,7 +61,7 @@ select {
   html:focus-within {
    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
