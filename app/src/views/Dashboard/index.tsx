@@ -1,11 +1,11 @@
 import * as Styles from './styles'
 
-const Dashbord: React.FC = () => {
+const Dashboard: React.FC = () => {
   return (
     <Styles.Container>
-      <h1>Dashbord</h1>
+      <h1>Dashboard</h1>
     </Styles.Container>
   )
 }
 
-export default Dashbord
+export default Dashboard

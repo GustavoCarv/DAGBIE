@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './views/Home'
 import Cadastro from './views/Cadastro'
 import Login from './views/Login'
-import Dashbord from './views/Dashbord'
+import Dashboard from './views/Dashboard'
 
 const Router: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const Router: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/Dashbord" element={<Dashbord />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   )
