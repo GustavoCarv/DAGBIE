@@ -1,12 +1,13 @@
 import GlobalStyle from './style/globalStyle'
 import { Theme } from './style/Theme'
-import Home from './views/Home'
+
+import Router from './routes'
 
 function App() {
   return (
     <Theme>
       <GlobalStyle />
-      <Home />
+      <Router />
     </Theme>
   )
 }
