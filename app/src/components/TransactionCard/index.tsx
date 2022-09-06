@@ -1,35 +1,30 @@
 import { IconButton } from 'rsuite'
 import EditIcon from '@rsuite/icons/Edit'
 import TrashIcon from '@rsuite/icons/Trash'
-
+import { Transaction } from '../../interfaces/transaction'
 import * as Style from './styles'
 
-type transaction = {
-  onEdit: () => void;
-  onDelete: () => void;
-  value: number;
-  createdAt: string;
-  category: string;
-  description?: string;
-  type: string;
-};
+type TransactionType = Transaction & {
+  onEdit: () => void
+  onDelete: () => void
+}
 
-export const TransactionCard: React.FC<transaction> = (props) => {
+export const TransactionCard = (props: TransactionType) => {
   return (
-    <Style.Container style={{
-      background: props.type === "Saída" ? "#a31515" : "#0da338"
-    }}>
+    <Style.Container
+      style={{
+        background: props.type === 'Saída' ? '#a31515' : '#0da338',
+      }}
+    >
       <Style.Header>
         <h2>
-          {props.type === "Saída"
-            ? "- "
-            : "+ "
-          } R$ {props.value.toString().replace('.',',')}
+          {props.type === 'Saída' ? '- ' : '+ '} R${' '}
+          {props.value.toString().replace('.', ',')}
         </h2>
         <p>{props.createdAt}</p>
       </Style.Header>
       <h3>{props.category}</h3>
-      <p>{props.description}</p>
+      {props.description && <p>{props.description}</p>}
       <Style.Footer>
         <IconButton
           onClick={props.onEdit}
@@ -37,8 +32,8 @@ export const TransactionCard: React.FC<transaction> = (props) => {
           size="lg"
           style={{
             borderRadius: 4,
-            border: "none",
-            cursor: "pointer"
+            border: 'none',
+            cursor: 'pointer',
           }}
         />
         <IconButton
@@ -47,12 +42,11 @@ export const TransactionCard: React.FC<transaction> = (props) => {
           size="lg"
           style={{
             borderRadius: 4,
-            border: "none",
-            cursor: "pointer"
+            border: 'none',
+            cursor: 'pointer',
           }}
         />
       </Style.Footer>
     </Style.Container>
   )
 }
-
