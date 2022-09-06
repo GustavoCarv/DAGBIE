@@ -5,21 +5,21 @@ import { Transaction } from '../../interfaces/transaction'
 import * as Style from './styles'
 
 type TransactionType = Transaction & {
-  onEdit: () => void;
-  onDelete: () => void;
+  onEdit: () => void
+  onDelete: () => void
 }
 
 export const TransactionCard = (props: TransactionType) => {
   return (
-    <Style.Container style={{
-      background: props.type === 'Saída' ? '#a31515' : '#0da338'
-    }}>
+    <Style.Container
+      style={{
+        background: props.type === 'Saída' ? '#a31515' : '#0da338',
+      }}
+    >
       <Style.Header>
         <h2>
-          {props.type === 'Saída'
-            ? "- " 
-            : "+ "
-          } R$ {props.value.toString().replace('.',',')}
+          {props.type === 'Saída' ? '- ' : '+ '} R${' '}
+          {props.value.toString().replace('.', ',')}
         </h2>
         <p>{props.createdAt}</p>
       </Style.Header>
@@ -29,25 +29,24 @@ export const TransactionCard = (props: TransactionType) => {
         <IconButton
           onClick={props.onEdit}
           icon={<EditIcon />}
-          size='lg'
-          style={{ 
-            borderRadius: 4, 
+          size="lg"
+          style={{
+            borderRadius: 4,
             border: 'none',
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
         />
         <IconButton
           onClick={props.onDelete}
           icon={<TrashIcon />}
-          size='lg'
-          style={{ 
-            borderRadius: 4, 
+          size="lg"
+          style={{
+            borderRadius: 4,
             border: 'none',
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
         />
       </Style.Footer>
     </Style.Container>
   )
 }
-
