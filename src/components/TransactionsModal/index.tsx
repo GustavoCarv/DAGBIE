@@ -19,7 +19,7 @@ export const TransactionsModal = (props: TransactionsType) => {
       onClose={() => props.open = false}
       style={{
         width: '95%',
-        margin: '20px 2.5%'
+        margin: '20px 2.5%',
       }}
     >
       <Modal.Header>
@@ -33,7 +33,7 @@ export const TransactionsModal = (props: TransactionsType) => {
         </Modal.Title>
         <Button 
           appearance='primary'
-          style={{ width: 70, background: '#26F05F', }} 
+          style={{ width: 70, background: '#26F05F' }} 
           active
           onClick={() => setShowFilters(true)}
         > 
