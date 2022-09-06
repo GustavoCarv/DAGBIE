@@ -6,7 +6,12 @@ import {
 } from 'rsuite'
 import * as Style from './styles'
 
-export const FiltersTransactionsModal = () => {
+type FiltersProps = {
+  onClose: () => void;
+  open: boolean;
+}
+
+export const FiltersTransactionsModal = (props: FiltersProps) => {
   const dataType = ['Entrada', 'Saída'].map(
     item => ({ label: item, value: item }),
   )
@@ -22,7 +27,7 @@ export const FiltersTransactionsModal = () => {
     item => ({ label: item, value: item }),
   );
   return (
-    <Style.Container open={ true } onClose={() => alert('fechar')}> 
+    <Style.Container open={ props.open } onClose={props.onClose}> 
       <Modal.Header>
         <Modal.Title style={{ margin: '30px 0'}}>Filtrar por: </Modal.Title>
       </Modal.Header>
@@ -47,6 +52,7 @@ export const FiltersTransactionsModal = () => {
         appearance='primary'
         style={{ width: 250, marginBottom: 20, background: '#26F05F' }} 
         active
+        onClick={() => alert('Funcionalidade de filtro está em andamento...')}
       >
         <strong>Aplicar</strong>
       </Button>

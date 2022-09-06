@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { Modal, Button } from 'rsuite'
+import { Modal } from 'rsuite'
 import * as Style from './styles'
 import { TransactionCard } from '../TransactionCard'
+import { FiltersTransactionsModal } from '../FiltersTransactionsModal'
 import { Transaction } from '../../interfaces/transaction'
 
 type TransactionsType = {
   transactions: Transaction[];
   open: boolean;
+  onClose: () => void;
 };
 
 export const TransactionsModal = (props: TransactionsType) => {
@@ -14,32 +16,25 @@ export const TransactionsModal = (props: TransactionsType) => {
   const [ showEdit, setShowEdit ] = useState<boolean>(false)
   const [ showConfirmDelete, setShowConfirmDelete ] = useState<boolean>(false)
   return (
-    <Modal
+    <Style.Container
       open={props.open}
-      onClose={() => props.open = false}
+      onClose={props.onClose}
       style={{
         width: '95%',
         margin: '20px 2.5%',
       }}
     >
-      <Modal.Header>
-        <Modal.Title
-          style={{
-            textAlign: 'center',
-            margin: '-20px 0 20px 0 ',
-          }}
-        >
-          <h1>Transações</h1>
-        </Modal.Title>
-        <Button 
-          appearance='primary'
-          style={{ width: 70, background: '#26F05F' }} 
+      <Style.Header>
+        <Style.ModalTitle>
+          <h2>Transações</h2>
+        </Style.ModalTitle>
+        <Style.FilterButton 
           active
           onClick={() => setShowFilters(true)}
         > 
-          Filtrar
-        </Button>
-      </Modal.Header>
+          <strong>Filtrar</strong>
+        </Style.FilterButton>
+      </Style.Header>
       <Modal.Body>
         <Style.CardsContainer>
           {props.transactions &&
@@ -60,14 +55,17 @@ export const TransactionsModal = (props: TransactionsType) => {
         </Style.CardsContainer>
       </Modal.Body>
       {showFilters === true && (
-        <p>modal de filtros aqui</p>
+        <FiltersTransactionsModal 
+          open={showFilters}
+          onClose={() => setShowFilters(false)}
+        />
       )}
       {showEdit === true && (
-        <p>modal para editar aqui</p>
+        {/* Modal de edição aqui */}
       )}
       {showConfirmDelete === true && (
-        <p>modal para excluir aqui</p>
+         {/* Modal de excluir aqui */}
       )}
-    </Modal>
+    </Style.Container>
   )
 }
