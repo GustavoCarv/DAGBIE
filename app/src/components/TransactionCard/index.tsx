@@ -1,7 +1,7 @@
-import React from 'react'
 import { IconButton } from 'rsuite'
 import EditIcon from '@rsuite/icons/Edit'
 import TrashIcon from '@rsuite/icons/Trash'
+
 import * as Style from './styles'
 
 type transaction = {
@@ -21,8 +21,8 @@ export const TransactionCard: React.FC<transaction> = (props) => {
     }}>
       <Style.Header>
         <h2>
-          {props.type === "Saída" 
-            ? "- " 
+          {props.type === "Saída"
+            ? "- "
             : "+ "
           } R$ {props.value.toString().replace('.',',')}
         </h2>
@@ -35,8 +35,8 @@ export const TransactionCard: React.FC<transaction> = (props) => {
           onClick={props.onEdit}
           icon={<EditIcon />}
           size="lg"
-          style={{ 
-            borderRadius: 4, 
+          style={{
+            borderRadius: 4,
             border: "none",
             cursor: "pointer"
           }}
@@ -45,8 +45,8 @@ export const TransactionCard: React.FC<transaction> = (props) => {
           onClick={props.onDelete}
           icon={<TrashIcon />}
           size="lg"
-          style={{ 
-            borderRadius: 4, 
+          style={{
+            borderRadius: 4,
             border: "none",
             cursor: "pointer"
           }}
