@@ -5,8 +5,8 @@ import { Transaction } from '../../interfaces/transaction'
 import * as Style from './styles'
 
 type TransactionType = Transaction & {
-  onEdit: () => void
-  onDelete: () => void
+  onEdit: () => void;
+  onDelete: () => void;
 }
 
 export const TransactionCard = (props: TransactionType) => {
@@ -17,13 +17,13 @@ export const TransactionCard = (props: TransactionType) => {
       }}
     >
       <Style.Header>
-        <h2>
+        <h3>
           {props.type === 'Saída' ? '- ' : '+ '} R${' '}
           {props.value.toString().replace('.', ',')}
-        </h2>
+        </h3>
         <p>{props.createdAt}</p>
       </Style.Header>
-      <h3>{props.category}</h3>
+      <h4>{props.category}</h4>
       {props.description && <p>{props.description}</p>}
       <Style.Footer>
         <IconButton
