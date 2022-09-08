@@ -4,6 +4,7 @@ import { Modal } from 'rsuite'
 
 export const Container = styled(Modal)`
   ${({ theme }) => css`
+    margin-top: 80px;
     font-size: ${theme.fontSizes.normal};
     width: 315px;
     text-align: center;
