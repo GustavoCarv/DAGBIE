@@ -10,7 +10,7 @@ type DeleteProps = {
 
 export const ConfirmDeleteModal = (props: DeleteProps) => {
   return (
-    <Style.Container open={ props.open } onClose = { props.onClose }>
+    <Style.Container open={ props.open } onClose={ props.onClose }>
       <Style.Header>
         <h5>{ props.title }</h5>
       </Style.Header>

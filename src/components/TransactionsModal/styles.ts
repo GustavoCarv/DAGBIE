@@ -36,6 +36,7 @@ export const CardsContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 15px;
   border-radius: 10px;
+  padding: 10px;
   @media (max-width: 1910px) {
     grid-template-columns: 1fr 1fr 1fr;
   }

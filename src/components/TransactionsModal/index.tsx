@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Modal } from 'rsuite'
 import * as Style from './styles'
 import { TransactionCard } from '../TransactionCard'
 import { FiltersTransactionsModal } from '../FiltersTransactionsModal'
 import { Transaction } from '../../interfaces/transaction'
+import { ConfirmDeleteModal } from '../ConfirmDeleteModal'
 
-type TransactionsType = {
+type TransactionsProps = {
   transactions: Transaction[];
   open: boolean;
   onClose: () => void;
-};
+}
 
-export const TransactionsModal = (props: TransactionsType) => {
+export const TransactionsModal = (props: TransactionsProps) => {
   const [ showFilters, setShowFilters ] = useState<boolean>(false)
   const [ showEdit, setShowEdit ] = useState<boolean>(false)
   const [ showConfirmDelete, setShowConfirmDelete ] = useState<boolean>(false)
@@ -56,15 +57,20 @@ export const TransactionsModal = (props: TransactionsType) => {
       </Modal.Body>
       {showFilters === true && (
         <FiltersTransactionsModal 
-          open={showFilters}
-          onClose={() => setShowFilters(false)}
+          open={ showFilters }
+          onClose={ () => setShowFilters(false) }
         />
       )}
       {showEdit === true && (
         {/* Modal de edição aqui */}
       )}
       {showConfirmDelete === true && (
-         {/* Modal de excluir aqui */}
+        <ConfirmDeleteModal 
+          open={ showConfirmDelete }
+          title='Tem certeza que deseja excluir a transação?'
+          onClose={ () => setShowConfirmDelete(false) }
+          onAccept={ () => alert('Funcionalidade de exclusão em andamento...') }
+        />
       )}
     </Style.Container>
   )
