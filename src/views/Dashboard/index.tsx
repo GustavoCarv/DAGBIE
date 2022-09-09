@@ -1,9 +1,22 @@
+import { useState } from 'react'
+import { ButtonCreateTransaction } from '../../components/ButtonCreateTransaction'
+import { CreateTransactionModal } from '../../components/CreateTransactionModal'
 import * as Styles from './styles'
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
+  const [ showCreateTransaction, setShowCreateTransaction ] = useState<boolean>(false);
   return (
     <Styles.Container>
-      <h1>Dashboard</h1>
+      <ButtonCreateTransaction 
+        onClick={() => setShowCreateTransaction(true)}
+      />
+      {showCreateTransaction && (
+        <CreateTransactionModal 
+          open={showCreateTransaction}
+          onClose={() => setShowCreateTransaction(false)} 
+          createTransaction={() => alert('Função para criar transação não está pronta')}
+        />
+      )}
     </Styles.Container>
   )
 }
