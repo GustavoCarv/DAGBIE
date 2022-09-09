@@ -20,7 +20,7 @@ export const ConfirmDeleteModal = (props: DeleteProps) => {
           onClick={ props.onAccept }
           appearance='primary'
         >
-          Deletar
+          Excluir
         </Button>
         <Button 
           style={{ marginBottom: '5px', background: '#F2F2F2', color: '#000' }}

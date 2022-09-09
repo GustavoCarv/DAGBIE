@@ -25,7 +25,7 @@ export const FiltersTransactionsModal = (props: FiltersProps) => {
     'Outro',
   ].map(
     item => ({ label: item, value: item }),
-  );
+  )
   return (
     <Style.Container open={ props.open } onClose={props.onClose}> 
       <Modal.Header>
