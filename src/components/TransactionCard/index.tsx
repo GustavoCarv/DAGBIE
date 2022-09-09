@@ -22,7 +22,7 @@ export const TransactionCard = (props: TransactionType) => {
           } R${' '}
           { props.value.toString().replace('.', ',') }
         </h3>
-        <p>{ props.createdAt }</p>
+        {/* Fazer a formatação de data aqui <p>{ props.createdAt }</p> */}
       </Style.Header>
       <h4>{ props.category }</h4>
       { props.description && <p>{ props.description }</p> }
@@ -35,7 +35,7 @@ export const TransactionCard = (props: TransactionType) => {
             borderRadius: 4,
             border: 'none',
             cursor: 'pointer',
-            background: '#fff'
+            background: '#fff',
           }}
         />
         <IconButton
@@ -47,7 +47,7 @@ export const TransactionCard = (props: TransactionType) => {
             border: 'none',
             cursor: 'pointer',
             color: '#A31515',
-            background: '#fff'
+            background: '#fff',
           }}
         />
       </Style.Footer>
