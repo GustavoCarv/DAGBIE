@@ -1,4 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
+
+import BackgroundImage from "../assets/backgroundImage.png";
 
 export default createGlobalStyle`
 
@@ -32,13 +34,24 @@ html:focus-within {
 }
 
 html {
-  @media(max-width: 720px) {font-size: 87.5%;}
+  min-height: 100vh;
+
+  background-image: url(${BackgroundImage});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover ;
+  @media(max-width: 720px) {
+    background-position: 100%;
+    font-size: 87.5%;
+  }
   @media(max-width: 1024px) {font-size: 93.75%;}
 }
 
 body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+
+  background: transparent;
 }
 
 a:not([class]) {
@@ -73,4 +86,4 @@ select {
   }
 }
 
-`
+`;

@@ -7,11 +7,11 @@ export const DefaultInput = styled(Input)`
   ${({ theme }) => css`
     background-color: ${theme.colors.lightGrey};
     border-radius: 8px;
-    padding: 21px;
-    font-size: ${theme.fontSizes.medium};
+    padding: 16px;
+    font-size: ${theme.fontSizes.normal_plus};
   `}
 `
 
 export const DefaultInputGroup = styled(InputGroup)`
-  border: 1px solid ${({ theme }) => theme.colors.black};
+/*   border: 1px solid ${({ theme }) => theme.colors.black}; */
 `
