@@ -14,7 +14,7 @@ const LoginCard: React.FC = () => {
 
   return (
     <WrapperCard title="Cadastro">
-      <BaseInput type="email">
+      <BaseInput placeholder="Email" type="email">
         <InputGroup.Addon
           style={{
             top: '50%',
@@ -27,7 +27,7 @@ const LoginCard: React.FC = () => {
           <EmailIcon />
         </InputGroup.Addon>
       </BaseInput>
-      <BaseInput type={`${showPassword ? 'text' : 'password'}`}>
+      <BaseInput placeholder="Senha" type={`${showPassword ? 'text' : 'password'}`}>
         <InputGroup.Addon
           style={{
             top: '50%',
