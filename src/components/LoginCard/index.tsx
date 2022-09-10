@@ -1,7 +1,6 @@
 import { InputGroup, Button } from 'rsuite'
 import WrapperCard from '../WrapperCard'
 import BaseInput from '../../components/Input'
-import AvatarIcon from '@rsuite/icons/legacy/Avatar'
 import VisibleIcon from '@rsuite/icons/Visible'
 import UnvisibleIcon from '@rsuite/icons/Unvisible'
 import EmailIcon from '@rsuite/icons/Email'
@@ -10,22 +9,12 @@ import EmailIcon from '@rsuite/icons/Email'
 
 import { useState } from 'react'
 
-const SignInCard: React.FC = () => {
+const LoginCard: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
     <WrapperCard title="Cadastro">
-      <BaseInput placeholder="Nome" type="text">
-        <InputGroup.Addon
-          style={{
-            top: '50%',
-            transform: 'translate(0, -50%)',
-          }}
-        >
-          <AvatarIcon />
-        </InputGroup.Addon>
-      </BaseInput>
-      <BaseInput placeholder='Email' type="email">
+      <BaseInput type="email">
         <InputGroup.Addon
           style={{
             top: '50%',
@@ -38,20 +27,7 @@ const SignInCard: React.FC = () => {
           <EmailIcon />
         </InputGroup.Addon>
       </BaseInput>
-      <BaseInput placeholder='Senha' type={`${showPassword ? 'text' : 'password'}`}>
-        <InputGroup.Addon
-          style={{
-            top: '50%',
-            transform: 'translate(0, -50%)',
-          }}
-          onClick={() => {
-            setShowPassword(!showPassword)
-          }}
-        >
-          {showPassword ? <VisibleIcon /> : <UnvisibleIcon />}
-        </InputGroup.Addon>
-      </BaseInput>
-      <BaseInput placeholder='Confirme sua senha' type={`${showPassword ? 'text' : 'password'}`}>
+      <BaseInput type={`${showPassword ? 'text' : 'password'}`}>
         <InputGroup.Addon
           style={{
             top: '50%',
@@ -65,10 +41,10 @@ const SignInCard: React.FC = () => {
         </InputGroup.Addon>
       </BaseInput>
       <Button color="green" appearance="primary" size="lg">
-        Cadastra-se
+        Entrar
       </Button>
     </WrapperCard>
   )
 }
 
-export default SignInCard
+export default LoginCard

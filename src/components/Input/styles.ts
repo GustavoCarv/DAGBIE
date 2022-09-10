@@ -13,5 +13,5 @@ export const DefaultInput = styled(Input)`
 `
 
 export const DefaultInputGroup = styled(InputGroup)`
-  border: 1px solid ${({ theme }) => theme.colors.black};
+/*   border: 1px solid ${({ theme }) => theme.colors.black}; */
 `
