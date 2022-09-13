@@ -1,7 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-import BackgroundImage from "../assets/backgroundImage.png";
-
 export default createGlobalStyle`
 
 *,
@@ -35,13 +33,7 @@ html:focus-within {
 
 html {
   min-height: 100vh;
-
-  background-image: url(${BackgroundImage});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover ;
   @media(max-width: 720px) {
-    background-position: 100%;
     font-size: 87.5%;
   }
   @media(max-width: 1024px) {font-size: 93.75%;}
