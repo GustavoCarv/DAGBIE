@@ -1,12 +1,21 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { ButtonCreateTransaction } from '../../components/ButtonCreateTransaction'
 import { CreateTransactionModal } from '../../components/CreateTransactionModal'
+import { TransactionsModal } from '../../components/TransactionsModal'
+import { transactions } from '../../db'
 import * as Styles from './styles'
 
 const Dashboard = () => {
-  const [ showCreateTransaction, setShowCreateTransaction ] = useState<boolean>(false);
-  return (
+  const [ showCreateTransaction, setShowCreateTransaction ] = useState<boolean>(false)
+  const [ showTransactions, setShowTransactions ] = useState<boolean>(false)
+  return ( 
     <Styles.Container>
+      <button onClick={() => setShowTransactions(true)}>Clique aqui para ver as transações (teste)</button>
+      <TransactionsModal
+        transactions={transactions}
+        open={showTransactions}
+        onClose={() => setShowTransactions(false)}
+      />
       <ButtonCreateTransaction 
         onClick={() => setShowCreateTransaction(true)}
       />
@@ -14,7 +23,6 @@ const Dashboard = () => {
         <CreateTransactionModal 
           open={showCreateTransaction}
           onClose={() => setShowCreateTransaction(false)} 
-          createTransaction={() => alert('Função para criar transação não está pronta')}
         />
       )}
     </Styles.Container>

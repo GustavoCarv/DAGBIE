@@ -10,18 +10,18 @@ export const formatNumberToCurrencyInput = (e: React.ChangeEvent<HTMLInputElemen
 }
 
 export const formatNumberToCurrencyOutput = (value: number) => {
-  let newValue = value
-  newValue = newValue.toLocaleString('pt-br', {
+  const valueInput = value
+  const newValueInput = valueInput.toLocaleString('pt-br', {
     style: 'currency',
     currency: 'BRL',
     minimumFractionDigits: 2,
   })
-  return newValue
+  return newValueInput
 }
 
 export const formatCurrencyToNumber = (currency: string) => {
-  let value = currency
-  value = value.replace(/[^0-9,]*/g, '').replace(',','.')
-  value = parseFloat(value)
-  return value
+  const valueInput = currency
+  const newValueInput = valueInput.replace(/[^0-9,]*/g, '').replace(',','.')
+  const newValueInputN = parseFloat(newValueInput)
+  return newValueInputN
 }
