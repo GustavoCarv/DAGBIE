@@ -1,4 +1,4 @@
-import { InputGroup, Button } from 'rsuite'
+import { InputGroup } from 'rsuite'
 import WrapperCard from '../WrapperCard'
 import BaseInput from '../../components/Input'
 import AvatarIcon from '@rsuite/icons/legacy/Avatar'
@@ -6,7 +6,7 @@ import VisibleIcon from '@rsuite/icons/Visible'
 import UnvisibleIcon from '@rsuite/icons/Unvisible'
 import EmailIcon from '@rsuite/icons/Email'
 
-/* import * as Style from './styles' */
+import * as Style from './styles'
 
 import { useState } from 'react'
 
@@ -25,7 +25,7 @@ const SignInCard: React.FC = () => {
           <AvatarIcon />
         </InputGroup.Addon>
       </BaseInput>
-      <BaseInput placeholder='Email' type="email">
+      <BaseInput placeholder="Email" type="email">
         <InputGroup.Addon
           style={{
             top: '50%',
@@ -38,7 +38,10 @@ const SignInCard: React.FC = () => {
           <EmailIcon />
         </InputGroup.Addon>
       </BaseInput>
-      <BaseInput placeholder='Senha' type={`${showPassword ? 'text' : 'password'}`}>
+      <BaseInput
+        placeholder="Senha"
+        type={`${showPassword ? 'text' : 'password'}`}
+      >
         <InputGroup.Addon
           style={{
             top: '50%',
@@ -51,7 +54,10 @@ const SignInCard: React.FC = () => {
           {showPassword ? <VisibleIcon /> : <UnvisibleIcon />}
         </InputGroup.Addon>
       </BaseInput>
-      <BaseInput placeholder='Confirme sua senha' type={`${showPassword ? 'text' : 'password'}`}>
+      <BaseInput
+        placeholder="Confirme sua senha"
+        type={`${showPassword ? 'text' : 'password'}`}
+      >
         <InputGroup.Addon
           style={{
             top: '50%',
@@ -64,9 +70,10 @@ const SignInCard: React.FC = () => {
           {showPassword ? <VisibleIcon /> : <UnvisibleIcon />}
         </InputGroup.Addon>
       </BaseInput>
-      <Button color="green" appearance="primary" size="lg">
-        Cadastra-se
-      </Button>
+      <Style.DefaultButton>Cadastrar-se</Style.DefaultButton>
+      <Style.DefaultLink to={'/login'}>
+        Já tem conta? Clique aqui para logar!
+      </Style.DefaultLink>
     </WrapperCard>
   )
 }

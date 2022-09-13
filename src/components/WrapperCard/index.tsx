@@ -5,11 +5,10 @@ type WrapperCardProps = {
   children?: React.ReactNode
 }
 
-const WrapperCard: React.FC<WrapperCardProps> = ({ title, children }) => {
+const WrapperCard: React.FC<WrapperCardProps> = ({ children }) => {
   return (
     <Style.Container>
       <Style.FormWrapper>
-        <Style.Title>{title}</Style.Title>
         <Style.Form>
           <Style.Form>{children}</Style.Form>
         </Style.Form>

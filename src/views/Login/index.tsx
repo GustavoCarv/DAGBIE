@@ -1,11 +1,12 @@
 import LoginCard from '../../components/LoginCard'
+import LogoComponent from '../../components/LogoComponent'
 
 import * as Styles from './styles'
 
 const Login: React.FC = () => {
   return (
     <Styles.Container>
-      <h1>Login</h1>
+      <LogoComponent />
       <LoginCard />
     </Styles.Container>
   )

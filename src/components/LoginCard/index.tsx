@@ -1,11 +1,11 @@
-import { InputGroup, Button } from 'rsuite'
+import { InputGroup } from 'rsuite'
 import WrapperCard from '../WrapperCard'
 import BaseInput from '../../components/Input'
 import VisibleIcon from '@rsuite/icons/Visible'
 import UnvisibleIcon from '@rsuite/icons/Unvisible'
 import EmailIcon from '@rsuite/icons/Email'
 
-/* import * as Style from './styles' */
+import * as Style from './styles'
 
 import { useState } from 'react'
 
@@ -27,7 +27,10 @@ const LoginCard: React.FC = () => {
           <EmailIcon />
         </InputGroup.Addon>
       </BaseInput>
-      <BaseInput placeholder="Senha" type={`${showPassword ? 'text' : 'password'}`}>
+      <BaseInput
+        placeholder="Senha"
+        type={`${showPassword ? 'text' : 'password'}`}
+      >
         <InputGroup.Addon
           style={{
             top: '50%',
@@ -40,9 +43,8 @@ const LoginCard: React.FC = () => {
           {showPassword ? <VisibleIcon /> : <UnvisibleIcon />}
         </InputGroup.Addon>
       </BaseInput>
-      <Button color="green" appearance="primary" size="lg">
-        Entrar
-      </Button>
+      <Style.DefaultButton>Login</Style.DefaultButton>
+      <Style.DefaultLink to={'/cadastro'}>Não tem cadastro? Clique aqui!</Style.DefaultLink>
     </WrapperCard>
   )
 }
