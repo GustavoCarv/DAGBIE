@@ -1,62 +1,111 @@
+// TODO: apagar este db quando a api estiver pronta
+
+export const users = [
+  {
+      id: 1,
+      name: "Ana Silva",
+      email: "ana12@gmail.com",
+      password: "1234g",
+      createdAt: "09/12/2003",
+  },
+  {
+      id: 2,
+      name: "Lucas M. Oliveira",
+      email: "alucas@gmail.com",
+      password: "124g@",
+      createdAt: "29/12/2020",
+  },
+  {
+      id: 3,
+      name: "Silveira Barbosa",
+      email: "sb_87@gmail.com",
+      password: "senha12",
+      createdAt: "19/08/2019",
+  },
+];
+
 export const transactions = [
-      {
-        id: "01",
+    {
+        id: 1,
         type: "Entrada",
         value: 329.98,
         category: "Comércio",
         description: "Lucro de terça-feira na venda de roupas",
-        createdAt: "09/12/2021",
-      },
-      {
-        id: "02",
+        userId: 2,
+        createdAt: "08-12-2002",
+        updatedAt: "01-01-2022",
+    },
+    {
+        id: 2,
         type: "Saída",
         value: 42,
         description: "Descrição aqui",
         category: "Compras",
-        createdAt: "09/12/2021",
-      },
-      {
-        id: "03",
+        userId: 1,
+        createdAt: "12-12-2020",
+        updatedAt: "01-01-2022",
+    },
+    {
+        id: 3,
         type: "Entrada",
         value: 329.98,
         category: "Outro",
-        description: "Lucro de terça-feira na venda de comida, etc etc, descrição aqui ... ...",
-        createdAt: "09/12/2021",
-      },
-      {
-        id: "04",
+        description:
+            "Lucro de terça-feira na venda de comida, etc etc, descrição aqui ... ...",
+        userId: 2,
+        createdAt: "08-12-2002",
+        updatedAt: "01-01-2022",
+    },
+    {
+        id: 4,
         type: "Entrada",
         value: 42,
         category: "Compras",
-        createdAt: "09/12/2021",
-      },
-      {
-        id: "05",
+        description: '',
+        userId: 3,
+        createdAt: "03-12-2019",
+        updatedAt: "01-01-2022",
+    },
+    {
+        id: 5,
         type: "Entrada",
         value: 329.98,
         category: "Outro",
         description: "Lucro de terça-feira na venda de roupas",
-        createdAt: "09/12/2021",
-      },
-      {
-        id: "06",
+        userId: 1,
+        createdAt: "08-12-2002",
+        updatedAt: "01-01-2022",
+    },
+    {
+        id: 6,
         type: "Saída",
         value: 42,
         category: "Compras",
-        createdAt: "09/12/2021",
-      },
-      {
-        id: "07",
+        description: '',
+        userId: 3,
+        createdAt: "09-12-2021",
+        updatedAt: "01-01-2022",
+    },
+    {
+        id: 7,
         type: "Entrada",
         value: 42,
         category: "Investimento",
-        createdAt: "09/12/2021",
-      },
-      {
-        id: "08",
+        description: '',
+        userId: 2,
+        createdAt: "08-12-2002",
+        updatedAt: "01-01-2022",
+    },
+    {
+        id: 8,
         type: "Saída",
         value: 42,
-        category: "Compras",
-        createdAt: "09/12/2021",
-      },
-]
+        category: "Outro",
+        description: '',
+        userId: 1,
+        createdAt: "06-12-2022",
+        updatedAt: "01-01-2022",
+    },
+];
+
+

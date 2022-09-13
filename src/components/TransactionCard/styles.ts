@@ -18,11 +18,19 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  h4 {
+    font-size: 180%;
+  }
 `
 export const Footer = styled.footer`
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 15px;
-  margin-top: 10px;
+  justify-content: space-between;
+  align-items: flex-end;
+  div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
 `
