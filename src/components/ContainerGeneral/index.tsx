@@ -10,7 +10,7 @@ export const ContainerGeneral = (props: ContainerGeneralProps) => {
   return (
     <Style.Container>
       <Style.TitleContainer>
-        <CreditCardMinusIcon color='green' />
+        <CreditCardMinusIcon color='#00453a' style={{ fontSize: '2em' }} />
         <Style.CardTitleHome>{props.title}</Style.CardTitleHome>
       </Style.TitleContainer>
       {props.children}

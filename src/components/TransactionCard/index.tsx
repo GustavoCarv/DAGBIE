@@ -4,7 +4,7 @@ import TrashIcon from '@rsuite/icons/Trash'
 import SortDownIcon from '@rsuite/icons/SortDown'
 import SortUpIcon from '@rsuite/icons/SortUp'
 import { formatNumberToCurrencyOutput } from '../../utils/formatCurrency'
-// import { formatDate } from '../../utils/formatDate'
+import { formatDate } from '../../utils/formatDate'
 import { Transaction } from '../../interfaces/transaction'
 import * as Style from './styles'
 
@@ -25,11 +25,17 @@ export const TransactionCard = (props: TransactionType) => {
         </h4>
       </Style.Header>
       <h5>{ props.category }</h5>
-      { props.description && <p>{ props.description }</p> }
+      <Style.Body>
+        { 
+          props.description && (
+            <p title={props.description}>{ props.description }</p>
+          )
+        }
+      </Style.Body>
       <Style.Footer>
-        {/* {props.createdAt && (
+        {props.createdAt && (
           <p>{ formatDate(props.createdAt) }</p>
-        )} */}
+        )}
         <div>
           <IconButton
             onClick={ props.onEdit }

@@ -24,12 +24,17 @@ export const CreateTransactionModal = (props: ModalProps) => {
       alert('Por favor, preencha os campos obrigatórios!')
     } else {
       const newValue = formatCurrencyToNumber(value.value)
-      // const body = {
-      //   value: newValue, type, category, description,
-      // }
-      // api.post aqui
+      {/* const body = {
+        value: newValue, type, category, description,
+      } */}
+      /////// api.post aqui /////////////
+      setValue({value: ''})
+      setType('')
+      setCategory('')
+      setDescription('')
       // TODO: apagar esse alert após fazer o create da api
       alert(`${newValue}, ${type}, ${category}, ${description}`)
+
     }
   }
   const categories = [

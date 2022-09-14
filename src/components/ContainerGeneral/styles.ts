@@ -23,7 +23,7 @@ export const CardTitleHome = styled.h4`
 
 export const TitleContainer = styled.div`
 ${({ theme }) => css`
-  color: ${theme.colors.darkGreen};
+  color: ${theme.colors.$brandGreenHover};
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

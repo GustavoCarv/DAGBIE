@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 export const BalanceContainer = styled.div`
 ${({ theme }) => css`
-  color: ${theme.colors.darkGreen};
+  color: ${theme.colors.$brandGreen};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +30,9 @@ export const TitleBalance = styled.p`
 ${({ theme }) => css`
   text-align: left;
   color: ${theme.colors.black};
+  font-size: 1.15rem;
   font-weight: 600;
+  margin-bottom: -10px;
   h2 {
     @media(max-width: 473px) {
       font-size: 25px;

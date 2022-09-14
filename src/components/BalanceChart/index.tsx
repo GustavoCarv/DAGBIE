@@ -1,10 +1,12 @@
 import { Button } from 'rsuite'
-
 import { ContainerGeneral } from '../ContainerGeneral'
+import { formatNumberToCurrencyOutput } from '../../utils/formatCurrency'
 import * as Style from './styles'
 
 type BalanceProps = {
-  balanceValue: {entry: number, exit: number, total: number};
+  entry: number; 
+  exit: number; 
+  total: number;
   onOpenExtract?: () => void;
 }
 
@@ -12,9 +14,9 @@ export const BalanceChart = (props: BalanceProps) => {
 
   const balanceMovement = 
   [
-    {title: 'Entradas', value: props.balanceValue.entry},
-    {title: 'Saídas', value: props.balanceValue.exit},
-    {title: 'Saldo', value: props.balanceValue.total},
+    {title: 'Saldo', value: props.total},
+    {title: 'Entradas', value: props.entry},
+    {title: 'Saídas', value: props.exit},
   ]
 
   return (
@@ -27,14 +29,20 @@ export const BalanceChart = (props: BalanceProps) => {
                 {el.title}
               </Style.TitleBalance>
               <Style.ContentBalance>
-                {`R$${el.value}`}
+                { formatNumberToCurrencyOutput(el.value) }
               </Style.ContentBalance>
             </Style.BalanceContainer>
           )})} 
         <Button 
           appearance='ghost'
           size="lg"
-          style={{ borderRadius: 12,  color: '#00856F', borderColor: '#00856F', alignSelf: 'center', marginTop: 8}} 
+          style={{ 
+            borderRadius: 12,  
+            color: '#00453a', 
+            borderColor: '#00453a', 
+            alignSelf: 'center', 
+            marginTop: 8,
+          }} 
           onClick={ props.onOpenExtract }
         >
           Ver extrato

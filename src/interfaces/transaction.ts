@@ -5,9 +5,6 @@ export interface Transaction {
   category: string;
   description?: string;
   userId?: number;
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
-
-// TODO: substituir os "string" em createdAt e updatedAt por "Date"
-// quando os dados estiverem vindo da API
