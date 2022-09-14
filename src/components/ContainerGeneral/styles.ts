@@ -3,6 +3,7 @@ import styled, { css  } from 'styled-components';
 export const Container = styled.div`
   background: #dce9e2;
   border-radius: 5px;
+  width: 95%;
   max-width: 720px;
   padding: 16px;
   display: flex;
@@ -20,7 +21,6 @@ export const CardTitleHome = styled.h4`
     }
   }
 `
-
 export const TitleContainer = styled.div`
 ${({ theme }) => css`
   color: ${theme.colors.$brandGreenHover};

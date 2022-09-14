@@ -1,27 +1,28 @@
 import React, { useState } from 'react'
 import { Button } from 'rsuite'
 import { BalanceChart } from '../../components/BalanceChart'
+import { LastWeekTransactionsCard } from '../../components/LastWeekTransactionsCard'
 import { ButtonCreateTransaction } from '../../components/ButtonCreateTransaction'
 import { CreateTransactionModal } from '../../components/CreateTransactionModal'
 import { TransactionsModal } from '../../components/TransactionsModal'
 import { transactions } from '../../db'
-import * as Styles from './styles'
+import * as Style from './styles'
 
 const Dashboard = () => {
   const [ showCreateTransaction, setShowCreateTransaction ] = useState<boolean>(false)
   const [ showTransactions, setShowTransactions ] = useState<boolean>(false)
   return ( 
-    <Styles.Container>
-      <div style={{height:70, width:"100%", background:"green"}}>Header teste</div>
-      <div style={{maxWidth:720, margin:'auto', height:70, display:"flex", justifyContent:"spaceBeetwen", alignItems:"flex-end"}}>
-        <h3 style={{color:"#495057"}}>Olá, Antônio</h3>
+    <Style.Container>
+      <div style={{height:70, width:"100%", background:"green", color: '#fff'}}>Header teste</div>
+      <Style.WelcomeUser>
+        <h3>Olá, Antônio</h3>
         <Button 
           appearance='ghost'
           size="lg"
           style={{ 
-            borderRadius: 12,  
             color: '#495057', 
             borderColor: '#495057', 
+            borderRadius: 50,
             alignSelf: 'center', 
             marginTop: 8,
           }} 
@@ -29,13 +30,14 @@ const Dashboard = () => {
         >
           Nova transação
         </Button>
-      </div>
+      </Style.WelcomeUser>
       <BalanceChart 
         entry={987}
         exit={1900}
         total={32}
         onOpenExtract={() => setShowTransactions(true)}
       />
+      <LastWeekTransactionsCard transactions={transactions} />
       <ButtonCreateTransaction 
         onClick={() => setShowCreateTransaction(true)}
       />
@@ -48,7 +50,8 @@ const Dashboard = () => {
         open={showTransactions}
         onClose={() => setShowTransactions(false)}
       />
-    </Styles.Container>
+      <div style={{height:60, width:"100%", background:"green", color: '#fff'}}>Footer teste</div>
+    </Style.Container>
   )
 }
 

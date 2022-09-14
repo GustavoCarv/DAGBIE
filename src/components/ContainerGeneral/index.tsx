@@ -1,16 +1,17 @@
 import * as Style from './styles'
-import CreditCardMinusIcon from '@rsuite/icons/CreditCardMinus';
+import CreditCardPlusIcon from '@rsuite/icons/CreditCardPlus';
 
 type ContainerGeneralProps = {
   title: string;
   children: React.ReactNode;
+  hasCalendar?: boolean;
 }
 
 export const ContainerGeneral = (props: ContainerGeneralProps) => {
   return (
     <Style.Container>
       <Style.TitleContainer>
-        <CreditCardMinusIcon color='#00453a' style={{ fontSize: '2em' }} />
+        <CreditCardPlusIcon color='#00453a' style={{ fontSize: '2em' }} />
         <Style.CardTitleHome>{props.title}</Style.CardTitleHome>
       </Style.TitleContainer>
       {props.children}

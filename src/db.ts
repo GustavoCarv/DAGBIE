@@ -6,24 +6,24 @@ export const users = [
       name: "Ana Silva",
       email: "ana12@gmail.com",
       password: "1234g",
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
   },
   {
       id: 2,
       name: "Lucas M. Oliveira",
       email: "alucas@gmail.com",
       password: "124g@",
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
   },
   {
       id: 3,
       name: "Silveira Barbosa",
       email: "sb_87@gmail.com",
       password: "senha12",
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
   },
 ];
 
@@ -35,8 +35,8 @@ export const transactions = [
         category: "Comércio",
         description: "Lucro de terça-feira na venda de roupas",
         userId: 2,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new Date(Date.now()),
+        updatedAt: new Date(Date.now()),
     },
     {
         id: 2,
@@ -45,8 +45,8 @@ export const transactions = [
         description: "Descrição aqui",
         category: "Compras",
         userId: 1,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new Date(Date.now()),
+        updatedAt: new Date(Date.now()),
     },
     {
         id: 3,
@@ -56,8 +56,8 @@ export const transactions = [
         description:
             "Lucro de terça-feira na venda de comida, etc etc, descrição aqui ... ...",
         userId: 2,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new Date(Date.now()),
+        updatedAt: new Date(Date.now()),
     },
     {
         id: 4,
@@ -66,8 +66,8 @@ export const transactions = [
         category: "Compras",
         description: '',
         userId: 3,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new Date(Date.now()),
+        updatedAt: new Date(Date.now()),
     },
     {
         id: 5,
@@ -76,8 +76,8 @@ export const transactions = [
         category: "Outro",
         description: "Lucro de terça-feira na venda de roupas",
         userId: 1,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new Date(Date.now()),
+        updatedAt: new Date(Date.now()),
     },
     {
         id: 6,
@@ -86,8 +86,8 @@ export const transactions = [
         category: "Compras",
         description: '',
         userId: 3,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new Date(Date.now()),
+        updatedAt: new Date(Date.now()),
     },
     {
         id: 7,
@@ -96,8 +96,8 @@ export const transactions = [
         category: "Investimento",
         description: '',
         userId: 2,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new Date(Date.now()),
+        updatedAt: new Date(Date.now()),
     },
     {
         id: 8,
@@ -106,8 +106,8 @@ export const transactions = [
         category: "Outro",
         description: 'Descrição aqui etc etc etc etc jajajajaj sssss dddd. etc etc descrção grande aqui Descrição aqui etc etc etc etc jajajajaj sssss dddd. etc etc descrção grande aqui',
         userId: 1,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new Date(Date.now()),
+        updatedAt: new Date(Date.now()),
     },
 ];
 
