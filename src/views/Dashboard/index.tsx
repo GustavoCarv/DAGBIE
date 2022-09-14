@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Button } from 'rsuite'
 import { BalanceChart } from '../../components/BalanceChart'
 import { LastWeekTransactionsCard } from '../../components/LastWeekTransactionsCard'
 import { ButtonCreateTransaction } from '../../components/ButtonCreateTransaction'
@@ -16,20 +15,12 @@ const Dashboard = () => {
       <div style={{height:70, width:"100%", background:"green", color: '#fff'}}>Header teste</div>
       <Style.WelcomeUser>
         <h3>Olá, Antônio</h3>
-        <Button 
-          appearance='ghost'
+        <Style.ButtonT 
           size="lg"
-          style={{ 
-            color: '#495057', 
-            borderColor: '#495057', 
-            borderRadius: 50,
-            alignSelf: 'center', 
-            marginTop: 8,
-          }} 
           onClick={() => setShowCreateTransaction(true)}
         >
           Nova transação
-        </Button>
+        </Style.ButtonT>
       </Style.WelcomeUser>
       <BalanceChart 
         entry={987}

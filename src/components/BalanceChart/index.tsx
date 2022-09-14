@@ -1,4 +1,3 @@
-import { Button } from 'rsuite'
 import { ContainerGeneral } from '../ContainerGeneral'
 import { formatNumberToCurrencyOutput } from '../../utils/formatCurrency'
 import * as Style from './styles'
@@ -28,25 +27,19 @@ export const BalanceChart = (props: BalanceProps) => {
               <Style.TitleBalance>
                 {el.title}
               </Style.TitleBalance>
+              <Style.Line></Style.Line>
               <Style.ContentBalance>
                 { formatNumberToCurrencyOutput(el.value) }
               </Style.ContentBalance>
             </Style.BalanceContainer>
           )})} 
-        <Button 
+        <Style.ButtonT 
           appearance='ghost'
-          size="lg"
-          style={{ 
-            borderRadius: 12,  
-            color: '#00453a', 
-            borderColor: '#00453a', 
-            alignSelf: 'center', 
-            marginTop: 8,
-          }} 
+          size='lg'
           onClick={ props.onOpenExtract }
         >
           Ver extrato
-        </Button>
+        </Style.ButtonT>
       </Style.BodyBalance>
     </ContainerGeneral>
   )
