@@ -10,6 +10,6 @@ export const Button = styled(IconButton)`
     }
   `};
   position: fixed;
-  bottom: 20px;
+  bottom: 35px;
   right: 20px;
 `

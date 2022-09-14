@@ -5,6 +5,7 @@ export const baseTheme = {
         lightRed: "#F03737",
         darkRed: "#A31515",
         lightGrey: "#D9D9D9",
+        darkGrey: "#495057",
         white: "#fff",
         black: "#000",
         $brandGreen: "#00856F",
@@ -13,7 +14,7 @@ export const baseTheme = {
     },
     fontSizes: {
         normal: "1rem",
-        normal_plus: "1.25rem",
+        normal_plus: "1.15rem",
         medium: "1.5rem",
         large: "2rem",
     },
