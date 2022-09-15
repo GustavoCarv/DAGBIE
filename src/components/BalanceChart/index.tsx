@@ -1,4 +1,6 @@
+import React, { useState } from 'react'
 import { ContainerGeneral } from '../ContainerGeneral'
+import { ButtonVisibleBalance } from '../ButtonVisibleBalance'
 import { formatNumberToCurrencyOutput } from '../../utils/formatCurrency'
 import * as Style from './styles'
 
@@ -18,21 +20,24 @@ export const BalanceChart = (props: BalanceProps) => {
     {title: 'Saídas', value: props.exit},
   ]
 
+  const [visible, setVisible] = useState(true)
+
   return (
     <ContainerGeneral title='Movimentação'>
-      <Style.BodyBalance>
-        {balanceMovement.map((el, index) => {
+      <ButtonVisibleBalance visible={visible} onClick={() => setVisible(!visible)}/>
+      <Style.BodyBalance style={{justifyContent: !visible ? 'flex-end' : ''}}>
+       {visible && (balanceMovement.map((el, index) => {
           return (
-            <Style.BalanceContainer>
+            <Style.BalanceContainer key={index}>
               <Style.TitleBalance>
                 {el.title}
               </Style.TitleBalance>
               <Style.Line></Style.Line>
-              <Style.ContentBalance style={{color: index == 1 ? '#495057' : ''}}>
+              <Style.ContentBalance style={{color: index == 2 ? '#495057' : ''}}>
                 { formatNumberToCurrencyOutput(el.value) }
               </Style.ContentBalance>
             </Style.BalanceContainer>
-          )})} 
+          )}))}
         <Style.ButtonT 
           appearance='ghost'
           size='lg'
