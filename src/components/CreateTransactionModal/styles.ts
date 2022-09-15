@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import 'rsuite/dist/rsuite.css'
-import { Modal, Form } from 'rsuite'
+import { Modal, Form, Button } from 'rsuite'
 
 export const Container = styled(Modal)`
   width: 95%;
@@ -11,8 +11,8 @@ export const Header = styled(Modal.Header)`
 export const Title = styled(Modal.Title)`
   ${({ theme }) => css`
     font-size: ${theme.fontSizes.medium}; 
+    margin-top: 15px;
   `}
-  margin-top: 15px;
 `
 export const FormContainer = styled(Form)`
   width: 310px;
@@ -43,3 +43,27 @@ export const Select = styled.select`
     height: 20px;
   }
 `
+export const ButtonR = styled(Button)`
+  ${({ theme }) => css` 
+    color: ${theme.colors.white}; 
+    background: ${theme.colors.$brandGreen}; 
+    border-radius: 50px;
+    align-self: center;
+    &:hover {
+      background: ${theme.colors.$brandGreenHover}; 
+      color: ${theme.colors.white}; 
+    }
+  `}
+`;
+export const ButtonC = styled(Button)`
+  ${({ theme }) => css`
+    border-color: ${theme.colors.$brandGreen}; 
+    color: ${theme.colors.$brandGreen}; 
+    border-radius: 50px;
+    align-self: center;
+    &:hover {
+      background: ${theme.colors.$brandGreen}; 
+      color: ${theme.colors.white}; 
+    }
+  `}
+`;

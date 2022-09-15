@@ -4,7 +4,8 @@ import {
   formatNumberToCurrencyInput, 
   formatCurrencyToNumber, 
 } from '../../utils/formatCurrency'
-import { Form, ButtonToolbar, Button } from 'rsuite'
+import api from '../../services/api'
+import { Form, ButtonToolbar } from 'rsuite'
 
 type ModalProps = {
   open: boolean;
@@ -19,22 +20,25 @@ export const CreateTransactionModal = (props: ModalProps) => {
   const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
-  const handleSubmit = () => {
+  const createTransaction = () => {
     if(value.value === '' || type === '' || category === '') {
       alert('Por favor, preencha os campos obrigatórios!')
     } else {
       const newValue = formatCurrencyToNumber(value.value)
-      {/* const body = {
-        value: newValue, type, category, description,
-      } */}
-      /////// api.post aqui /////////////
+      const body = {
+        value: newValue, 
+        type, 
+        category, 
+        description,
+        createdAt: new Date(Date.now()), // excluir essa linha quando tiver com a api de verdade
+      } 
+      api.post('/transactions', body)
+        .then(() => alert('Transação criada com sucesso!'))
+        .catch(() => alert('Ops, algo deu errado, tente novamente'))
       setValue({value: ''})
       setType('')
       setCategory('')
       setDescription('')
-      // TODO: apagar esse alert após fazer o create da api
-      alert(`${newValue}, ${type}, ${category}, ${description}`)
-
     }
   }
   const categories = [
@@ -98,19 +102,17 @@ export const CreateTransactionModal = (props: ModalProps) => {
         </Form.Group>
         <Form.Group>
           <ButtonToolbar>
-            <Button 
-              appearance='primary' 
-              style={{ background: '#0DA338' }}
-              onClick={ () => handleSubmit() }
+            <Style.ButtonR  
+              onClick={createTransaction}
             >
               Registrar
-            </Button>
-            <Button 
-              appearance='default'
+            </Style.ButtonR>
+            <Style.ButtonC 
+              appearance='ghost'
               onClick={props.onClose}
             >
               Cancelar
-            </Button>
+            </Style.ButtonC>
           </ButtonToolbar>
         </Form.Group>
       </Style.FormContainer>

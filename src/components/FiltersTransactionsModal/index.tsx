@@ -2,7 +2,6 @@ import {
   Modal, 
   DateRangePicker, 
   SelectPicker, 
-  Button,
 } from 'rsuite'
 import * as Style from './styles'
 
@@ -48,14 +47,13 @@ export const FiltersTransactionsModal = (props: FiltersProps) => {
         placeholder='Categoria'
         searchable={false}
       />
-      <Button 
-        appearance='primary'
-        style={{ width: 250, marginBottom: 20, background: '#26F05F' }} 
+      <Style.ButtonT
+        style={{ width: 250, marginBottom: 20 }} 
         active
         onClick={() => alert('Funcionalidade de filtro está em andamento...')}
       >
         <strong>Aplicar</strong>
-      </Button>
+      </Style.ButtonT>
     </Style.Container>
   )
 } 
