@@ -21,14 +21,14 @@ export const BalanceChart = (props: BalanceProps) => {
   return (
     <ContainerGeneral title='Movimentação'>
       <Style.BodyBalance>
-        {balanceMovement.map((el) => {
+        {balanceMovement.map((el, index) => {
           return (
             <Style.BalanceContainer>
               <Style.TitleBalance>
                 {el.title}
               </Style.TitleBalance>
               <Style.Line></Style.Line>
-              <Style.ContentBalance>
+              <Style.ContentBalance style={{color: index == 1 ? '#495057' : ''}}>
                 { formatNumberToCurrencyOutput(el.value) }
               </Style.ContentBalance>
             </Style.BalanceContainer>
