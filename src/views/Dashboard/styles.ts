@@ -6,7 +6,7 @@ export const Container = styled.div`
 export const WelcomeUser = styled.div`
   width: 95%;
   max-width: 720px; 
-  margin: 50px auto 10px auto; 
+  margin: 110px auto 10px auto; 
   display: flex; 
   align-items: center;
   justify-content: space-between;

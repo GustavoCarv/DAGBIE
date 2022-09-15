@@ -13,9 +13,9 @@ type TransactionsProps = {
 }
 
 export const TransactionsModal = (props: TransactionsProps) => {
-  const [ showFilters, setShowFilters ] = useState<boolean>(false)
-  const [ showEdit, setShowEdit ] = useState<boolean>(false)
-  const [ showConfirmDelete, setShowConfirmDelete ] = useState<boolean>(false)
+  const [ showFilters, setShowFilters ] = useState(false)
+  const [ showEdit, setShowEdit ] = useState(false)
+  const [ showConfirmDelete, setShowConfirmDelete ] = useState(false)
   return (
     <Style.Container
       open={props.open}
@@ -29,10 +29,7 @@ export const TransactionsModal = (props: TransactionsProps) => {
         <Style.ModalTitle>
           <h2>Transações</h2>
         </Style.ModalTitle>
-        <Style.FilterButton 
-          active
-          onClick={() => setShowFilters(true)}
-        > 
+        <Style.FilterButton appearance='ghost' onClick={() => setShowFilters(true)}> 
           <strong>Filtrar</strong>
         </Style.FilterButton>
       </Style.Header>
@@ -55,12 +52,10 @@ export const TransactionsModal = (props: TransactionsProps) => {
           })}
         </Style.CardsContainer>
       </Modal.Body>
-      {showFilters === true && (
-        <FiltersTransactionsModal 
-          open={ showFilters }
-          onClose={ () => setShowFilters(false) }
-        />
-      )}
+      <FiltersTransactionsModal 
+        open={ showFilters }
+        onClose={ () => setShowFilters(false) }
+      />
       {showEdit === true && (
         {/* Modal de edição aqui */}
       )}

@@ -6,7 +6,7 @@ export const Container = styled(Modal)`
 `
 export const Header = styled(Modal.Header)`
   display: flex;
-  width: 320px;
+  width: 350px;
   margin: auto;
   align-items: center;
   @media(max-width: 473px) {
@@ -17,8 +17,16 @@ export const Header = styled(Modal.Header)`
   }
 `
 export const FilterButton = styled(Button)`
+  border-radius: 50px; 
+  color: #00453a; 
+  border-color: #00453a;
+  align-self: flex-end; 
   width: 120px;
   height: 40px;
+  &:hover {
+    background: #00856f;
+    color: #fff;
+  }
   @media(max-width: 405px) {
     width: 100px;
   }

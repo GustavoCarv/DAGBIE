@@ -11,6 +11,9 @@ export const ContainerGeneral = styled.div`
   gap: 25px;
   margin: 30px auto 40px auto;
   min-height: 186px;
+  @media(max-width: 690px) {
+    margin-bottom: 90px;
+  }
 `
 export const Container = styled.div`
   display: flex;

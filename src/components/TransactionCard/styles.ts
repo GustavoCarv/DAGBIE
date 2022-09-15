@@ -1,12 +1,14 @@
 import styled, { css } from 'styled-components'
 import 'rsuite/dist/rsuite.css'
+import EditIcon from '@rsuite/icons/Edit'
+import TrashIcon from '@rsuite/icons/Trash'
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    background: ${theme.colors.lightGrey};
+    background: ${theme.colors.$brandGreenLight};
+    color: ${theme.colors.$brandGreenHover};
   `}
   border-radius: 5px;
-  color: grey;
   width: 100%;
   padding: 10px 15px;
   display: flex;
@@ -15,9 +17,28 @@ export const Container = styled.div`
   gap: 5px;
 `
 export const Header = styled.header`
-  margin-bottom: 5px;
-  h4 {
-    font-size: 180%;
+  ${({ theme }) => css`
+    color: ${theme.colors.darkGrey};
+    margin-bottom: 5px;
+    h4 {
+      font-size: 180%;
+    }
+  `}
+`
+export const IconEdit = styled(EditIcon)`
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: green;
+  &:hover {
+    color: black;
+  }
+`
+export const IconTrash = styled(TrashIcon)`
+  cursor: pointer;
+  color: #A31515;
+  font-size: 1.4rem;
+  &:hover {
+    color: black;
   }
 `
 export const Body = styled.div`
@@ -37,7 +58,11 @@ export const Footer = styled.footer`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  p {
+    color: #495057;
+    font-size: 1.04rem;
   }
 `

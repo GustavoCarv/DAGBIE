@@ -1,6 +1,3 @@
-import { IconButton } from 'rsuite'
-import EditIcon from '@rsuite/icons/Edit'
-import TrashIcon from '@rsuite/icons/Trash'
 import SortDownIcon from '@rsuite/icons/SortDown'
 import SortUpIcon from '@rsuite/icons/SortUp'
 import { formatNumberToCurrencyOutput } from '../../utils/formatCurrency'
@@ -24,8 +21,8 @@ export const TransactionCard = (props: TransactionType) => {
           } { formatNumberToCurrencyOutput(props.value) }
         </h4>
       </Style.Header>
-      <h5>{ props.category }</h5>
       <Style.Body>
+      <h5>{ props.category }</h5>
         { 
           props.description && (
             <p title={props.description}>{ props.description }</p>
@@ -37,29 +34,8 @@ export const TransactionCard = (props: TransactionType) => {
           <p>{ formatDate(props.createdAt) }</p>
         )}
         <div>
-          <IconButton
-            onClick={ props.onEdit }
-            icon={ <EditIcon /> }
-            size="lg"
-            style={{
-              borderRadius: 4,
-              border: 'none',
-              cursor: 'pointer',
-              background: '#fff',
-            }}
-          />
-          <IconButton
-            onClick={ props.onDelete }
-            icon={ <TrashIcon /> }
-            size="lg"
-            style={{
-              borderRadius: 4,
-              border: 'none',
-              cursor: 'pointer',
-              color: '#A31515',
-              background: '#fff',
-            }}
-          />
+          <Style.IconEdit onClick={ props.onEdit } />
+          <Style.IconTrash onClick={ props.onDelete } />
         </div>
       </Style.Footer>
     </Style.Container>
