@@ -5,20 +5,21 @@ import TrashIcon from '@rsuite/icons/Trash'
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    background: ${theme.colors.$brandGreenLight};
+    background: ${theme.colors.$brandGreenLight2};
     color: ${theme.colors.$brandGreenHover};
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    box-shadow: ${theme.boxShadow};
   `}
-  border-radius: 5px;
-  width: 100%;
-  padding: 10px 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 5px;
 `
 export const Header = styled.header`
   ${({ theme }) => css`
-    color: ${theme.colors.darkGrey};
+    color: ${theme.colors.$grayParagraph};
     margin-bottom: 5px;
     h4 {
       font-size: 180%;
@@ -51,18 +52,20 @@ export const Body = styled.div`
   }
 `;
 export const Footer = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  div {
+  ${({ theme }) => css`
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  p {
-    color: #495057;
-    font-size: 1.04rem;
-  }
+    justify-content: space-between;
+    align-items: flex-end;
+    div {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    p {
+      color: ${theme.colors.$grayHeadline};
+      font-size: 1.06rem;
+    }
+  `}
 `

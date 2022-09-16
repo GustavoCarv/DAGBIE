@@ -1,17 +1,15 @@
 import * as Style from './styles'
+import { useNavigate } from 'react-router-dom'
 import AddOutlineIcon from '@rsuite/icons/AddOutline'
 
-type ButtonCreateProps = {
-  onClick: () => void;
-}
-
-export const ButtonCreateTransaction = (props: ButtonCreateProps) => {
+export const ButtonCreateTransaction = () => {
+  const navigate = useNavigate()
   return (
     <Style.Button 
       icon={<AddOutlineIcon color="#fff" />} 
       circle 
-      size="lg" 
-      onClick={props.onClick}
+      size="lg"
+      onClick={() => navigate('/registro/transacao')}
     />
   )
 }

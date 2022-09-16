@@ -1,13 +1,12 @@
-import styled, { css } from "styled-components";
-import { IconButton } from "rsuite";
+import styled from "styled-components";
 
-export const Button = styled(IconButton)`
-  ${({ theme }) => css`
-    align-self: flex-end;
-    margin-right: 16px;
-    background:${theme.colors.$brandGreen};
-    &:hover {
-      background: ${theme.colors.$brandGreenHover}
-    }
-  `};
+export const Button = styled.div`
+  align-self: flex-end;
+  margin-right: 16px;
+  margin-top: -95px;
+  @media(max-width: 690px) {
+    margin-top: -25px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+  }
 `

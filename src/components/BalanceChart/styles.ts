@@ -42,16 +42,40 @@ ${({ theme }) => css`
   `}
 `
 export const ContentBalance = styled.p`
-${({ theme }) => css`
-  text-align: left;
-  font-size: ${theme.fontSizes.medium};
-  font-weight: 700;
-  p {
-    @media(max-width: 473px) {
-      font-size: 25px;
+  ${({ theme }) => css`
+    text-align: left;
+    font-size: ${theme.fontSizes.medium};
+    font-weight: 700;
+    width: 140px;
+    p {
+      @media(max-width: 473px) {
+        font-size: 25px;
+      }
     }
-  }
-`}
+    @media(max-width: 690px) {
+      margin-right: 10px;
+    }
+  `}
+`
+export const ContentBalanceS = styled.p`
+  ${({ theme }) => css`
+    text-align: left;
+    font-size: ${theme.fontSizes.large};
+    font-weight: 700;
+    height: 33%;
+    width: 140px;
+    @media(max-width: 690px) {
+      height: 25px;
+      margin-top: -7px;
+      margin-bottom: 15px;
+    }
+    @media(max-width: 417px) {
+      width: 175px;
+    }
+    @media(max-width: 345px) {
+      width: 190px;
+    }
+  `}
 `
 export const Line = styled.div`
   border-bottom: 0.5px dotted #757a77;
