@@ -1,46 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, ChangeEvent } from 'react'
 import * as Style from './styles'
-import { 
-  formatNumberToCurrencyInput, 
-  formatCurrencyToNumber, 
-} from '../../utils/formatCurrency'
-import api from '../../services/api'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Form, ButtonToolbar } from 'rsuite'
+import api from '../../services/api'
+import { formatNumberToCurrencyInput, formatCurrencyToNumber } from '../../utils/formatCurrency'
 
-type ModalProps = {
-  open: boolean;
-  onClose: () => void;
- }
+type IParamsProps = {
+  id: string
+}
 
-export const CreateTransactionModal = (props: ModalProps) => {
-  const [ value, setValue ] = useState({value: ''})
+const EditTransaction = () => {
+  const { id } = useParams<IParamsProps>()
+  const navigate = useNavigate()
+  const [ value, setValue ] = useState({ value: '' })
   const [ type, setType ] = useState('')
   const [ category, setCategory ] = useState('')
   const [ description, setDescription ] = useState('')
-  const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeValue = (e: ChangeEvent<HTMLInputElement>) => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
-  const createTransaction = () => {
-    if(value.value === '' || type === '' || category === '') {
-      alert('Por favor, preencha os campos obrigatórios!')
+  const findTransaction = async (id: string) => {
+    const res = await api.get(`transactions/${id}`)
+    setValue({ value: res.data.value })
+    setType(res.data.type)
+    setCategory(res.data.category)
+    setDescription(res.data.description)
+  }
+  const editTransaction = async (id?: string) => {
+    if (value.value === '' || type === '' || category === '' ) {
+      alert('Por favor, preencha os campos obrigatórios.')
     } else {
       const newValue = formatCurrencyToNumber(value.value)
-      const body = {
+      const body = { 
         value: newValue, 
         type, 
         category, 
-        description,
-        createdAt: new Date(Date.now()), // excluir essa linha quando tiver com a api de verdade
-      } 
-      api.post('/transactions', body)
-        .then(() => alert('Transação criada com sucesso!'))
-        .catch(() => alert('Ops, algo deu errado, tente novamente'))
-      setValue({value: ''})
-      setType('')
-      setCategory('')
-      setDescription('')
+        description, 
+        createdAt: new Date(Date.now()),  // TODO: excluir esta linha quando estiver com api de verdade
+      }
+      await api.put(`transactions/${id}`, body)
+      .then(() => {
+        alert('Transação editada com sucesso!')
+        navigate('/dashboard')
+      })
+      .catch(() => alert('Ops, algo deu errado, tente novamente.'))
     }
   }
+  useEffect(() => {
+    if(id !== undefined) {
+      findTransaction(id)
+    }
+  }, [id])
   const categories = [
     'Casa',
     'Investimento',
@@ -51,19 +61,18 @@ export const CreateTransactionModal = (props: ModalProps) => {
     'Outro',
   ]
   return (
-    <Style.Container
-      open={ props.open }
-      onClose={ props.onClose }
-    >
+    <Style.Container>
       <Style.Header>
-        <Style.Title>Registro de transação</Style.Title>
+        <Style.Title>Editar transação</Style.Title>
       </Style.Header>
       <Style.FormContainer>
         <Form.Group controlId='value'>
           <Form.ControlLabel >Valor: <span>*</span></Form.ControlLabel>
           <Style.Input
             name='value' 
-            onChange={e => changeValue(formatNumberToCurrencyInput(e))}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              changeValue(formatNumberToCurrencyInput(e))
+            }}
             value={value.value}
             required
           />
@@ -71,6 +80,7 @@ export const CreateTransactionModal = (props: ModalProps) => {
         <Form.Group controlId='type'>
           <Form.ControlLabel>Tipo (Entrada / Saída): <span>*</span></Form.ControlLabel>
           <Style.Select
+            name='type' 
             onChange={e => setType(e.target.value)}
             value={type}
           >
@@ -82,6 +92,7 @@ export const CreateTransactionModal = (props: ModalProps) => {
         <Form.Group controlId='category'>
           <Form.ControlLabel>Categoria: <span>*</span></Form.ControlLabel>
           <Style.Select
+            name='category' 
             onChange={e => setCategory(e.target.value)}
             value={category}
           >
@@ -94,6 +105,7 @@ export const CreateTransactionModal = (props: ModalProps) => {
         <Form.Group controlId='description'>
           <Form.ControlLabel>Descrição (opcional):</Form.ControlLabel>
             <Style.Textarea
+              name='description' 
               rows={3}
               onChange={e => setDescription(e.target.value)}
               value={description}
@@ -101,15 +113,15 @@ export const CreateTransactionModal = (props: ModalProps) => {
             />
         </Form.Group>
         <Form.Group>
-          <ButtonToolbar>
+          <ButtonToolbar style={{ float:'right' }}>
             <Style.ButtonR  
-              onClick={createTransaction}
+              onClick={() => editTransaction(id)}
             >
-              Registrar
+              Salvar
             </Style.ButtonR>
             <Style.ButtonC 
               appearance='ghost'
-              onClick={props.onClose}
+              onClick={() => navigate('/dashboard')}
             >
               Cancelar
             </Style.ButtonC>
@@ -120,3 +132,4 @@ export const CreateTransactionModal = (props: ModalProps) => {
   )
 }
 
+export default EditTransaction

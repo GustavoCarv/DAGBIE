@@ -9,14 +9,17 @@ type ButtonVisibleProps = {
 
 export const ButtonVisibleBalance = (props: ButtonVisibleProps) => {
   return (
-    <Style.Button 
-      icon={props.visible ? 
-        <VisibleIcon style={{fontSize: '1.5em', color: '#fff'}} /> :
-        <EyeCloseIcon style={{fontSize: '1.5em', color: '#fff'}}/>
+    <Style.Button>
+      {props.visible 
+        ? <VisibleIcon 
+            style={{fontSize: '1.7em', color: '#00453A', cursor: 'pointer'}} 
+            onClick={props.onClick} 
+          /> 
+        : <EyeCloseIcon 
+            style={{fontSize: '1.7em', color: '#00453A', cursor: 'pointer' }} 
+            onClick={props.onClick}
+          />
       } 
-      circle
-      size="md" 
-      onClick={props.onClick}
-    />
+    </Style.Button>
   )
 }

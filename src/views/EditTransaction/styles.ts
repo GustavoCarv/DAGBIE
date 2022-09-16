@@ -1,17 +1,17 @@
 import styled, { css } from 'styled-components'
 import 'rsuite/dist/rsuite.css'
-import { Modal, Form, Button } from 'rsuite'
+import { Form, Button } from 'rsuite'
 
-export const Container = styled(Modal)`
+export const Container = styled.div`
   width: 95%;
 `
-export const Header = styled(Modal.Header)`
+export const Header = styled.div`
   text-align: center;
 `
-export const Title = styled(Modal.Title)`
+export const Title = styled.h2`
   ${({ theme }) => css`
     font-size: ${theme.fontSizes.medium}; 
-    margin-top: 15px;
+    margin-top: 25px;
   `}
 `
 export const FormContainer = styled(Form)`

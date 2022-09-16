@@ -6,11 +6,15 @@ export const baseTheme = {
         darkRed: "#A31515",
         lightGrey: "#D9D9D9",
         darkGrey: "#495057",
-        white: "#fff",
-        black: "#000",
+        $grayHeadline: "#061800",
+        $grayParagraph: "#384633",
+        $brandBeige: "#FFFAF1",
         $brandGreen: "#00856F",
         $brandGreenLight: "#DCE9E2",
+        $brandGreenLight2: "#F7F9F9",
         $brandGreenHover: "#00453A",
+        white: "#fff",
+        black: "#000",
     },
     fontSizes: {
         normal: "1rem",
@@ -18,4 +22,5 @@ export const baseTheme = {
         medium: "1.5rem",
         large: "2rem",
     },
+    boxShadow: "0px 3px 5px #bab8b8",
 };

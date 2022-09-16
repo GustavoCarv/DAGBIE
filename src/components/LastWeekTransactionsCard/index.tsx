@@ -4,7 +4,7 @@ import SortDownIcon from '@rsuite/icons/SortDown'
 import SortUpIcon from '@rsuite/icons/SortUp'
 import { formatNumberToCurrencyOutput } from '../../utils/formatCurrency'
 import { Transaction } from '../../interfaces/transaction'
-// import { formatDate } from '../../utils/formatDate'
+import { formatDate } from '../../utils/formatDate'
 
 type LastWeekProps = {
   transactions: Transaction[];
@@ -18,8 +18,12 @@ export const LastWeekTransactionsCard = (props: LastWeekProps) => {
         <Style.CardTitleHome>Última Semana</Style.CardTitleHome>
       </Style.TitleContainer>
       <Style.Container>
-        {props.transactions === null 
-          ? <p style={{ textAlign: 'center', marginTop: 20 }}>Você ainda não possui transações</p>
+        {props.transactions.length == 0 
+          ? <p 
+              style={{ textAlign: 'center', marginTop: 20, fontSize: '1.2rem' }}
+            >
+              Você ainda não possui transações
+            </p>
           : (props.transactions.map(t => (
               <Style.TransactionLine>
                 <div className='value'>
@@ -30,8 +34,7 @@ export const LastWeekTransactionsCard = (props: LastWeekProps) => {
                   <p>{formatNumberToCurrencyOutput(t.value)}</p>
                 </div>
                 <p className='category'>{t.category}</p>
-                {/* <p className='date'>{formatDate(t.createdAt)}</p> */}
-                <p className='date'>14 set 2022, quarta</p>
+                <p className='date'>{formatDate(t?.createdAt)}</p>
               </Style.TransactionLine>
             ))
           )

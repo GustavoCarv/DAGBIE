@@ -5,12 +5,12 @@ import { formatDate } from '../../utils/formatDate'
 import { Transaction } from '../../interfaces/transaction'
 import * as Style from './styles'
 
-type TransactionType = Transaction & {
-  onEdit: () => void;
+type TransactionProps = Transaction & {
   onDelete: () => void;
+  onEdit: () => void;
 }
 
-export const TransactionCard = (props: TransactionType) => {
+export const TransactionCard = (props: TransactionProps) => {
   return (
     <Style.Container>
       <Style.Header>

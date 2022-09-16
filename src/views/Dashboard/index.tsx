@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import * as Style from './styles'
+import { useNavigate } from 'react-router-dom'
 import { BalanceChart } from '../../components/BalanceChart'
 import { LastWeekTransactionsCard } from '../../components/LastWeekTransactionsCard'
 import { ButtonCreateTransaction } from '../../components/ButtonCreateTransaction'
-import { CreateTransactionModal } from '../../components/CreateTransactionModal'
 import { TransactionsModal } from '../../components/TransactionsModal'
 import api from '../../services/api'
 import { Transaction } from '../../interfaces/transaction'
-import * as Style from './styles'
 
 const Dashboard = () => {
-  const [ showCreateTransaction, setShowCreateTransaction ] = useState(false)
+  const navigate = useNavigate()
   const [ showTransactions, setShowTransactions ] = useState(false)
   const [ transactions, setTransactions ] = useState<Transaction[]>([])
-  const getTransactions = () => {
-    api.get('/transactions')
+  const getTransactions = async () => {
+    await api.get('/transactions')
       .then(res => setTransactions(res.data))
       .catch(err => console.error(err.message))
   }
@@ -38,7 +38,7 @@ const Dashboard = () => {
         <h3>Olá, Antônio</h3>
         <Style.ButtonT 
           size="lg"
-          onClick={() => setShowCreateTransaction(true)}
+          onClick={() => navigate('/registro/transacao')}
         >
           Nova transação
         </Style.ButtonT>
@@ -50,15 +50,8 @@ const Dashboard = () => {
         onOpenExtract={() => setShowTransactions(true)}
       />
       <LastWeekTransactionsCard transactions={transactions} />
-      <ButtonCreateTransaction 
-        onClick={() => setShowCreateTransaction(true)}
-      />
-      <CreateTransactionModal 
-        open={showCreateTransaction}
-        onClose={() => setShowCreateTransaction(false)} 
-      />
+      <ButtonCreateTransaction />
       <TransactionsModal
-        transactions={transactions}
         open={showTransactions}
         onClose={() => setShowTransactions(false)}
       />

@@ -27,52 +27,36 @@
   ],
   "transactions": [
     {
-      "value": 21.66,
-      "type": "Entrada",
-      "category": "Outro",
-      "description": "",
-      "createdAt": "2022-09-15T02:58:56.949Z",
-      "id": 1
-    },
-    {
-      "value": 213.33,
+      "value": 101,
       "type": "Saída",
-      "category": "Saúde",
-      "description": "Compra de um remédio da farmácia da minha cidade, etc etc etc",
-      "createdAt": "2022-09-15T02:59:45.284Z",
+      "category": "Viagem",
+      "description": "",
+      "createdAt": "2022-09-16T20:54:50.642Z",
       "id": 2
     },
     {
-      "value": 987,
+      "value": 2003.22,
+      "type": "Entrada",
+      "category": "Educação",
+      "description": "Algum saldo positivo pra testar o design",
+      "createdAt": "2022-09-16T21:19:54.703Z",
+      "id": 8
+    },
+    {
+      "value": 900,
       "type": "Entrada",
       "category": "Investimento",
-      "description": "Lucro de investimento no mercado de criptomoedas",
-      "createdAt": "2022-09-15T03:00:21.952Z",
-      "id": 3
+      "description": "Lucro dos bitcoins e eth",
+      "createdAt": "2022-09-16T20:55:12.933Z",
+      "id": 10
     },
     {
-      "value": 765,
-      "type": "Entrada",
-      "category": "Outro",
-      "description": "",
-      "createdAt": "2022-09-15T03:09:01.831Z",
-      "id": 4
-    },
-    {
-      "value": 2.11,
+      "value": 211.56,
       "type": "Saída",
-      "category": "Outro",
+      "category": "Viagem",
       "description": "",
-      "createdAt": "2022-09-15T03:09:27.676Z",
-      "id": 5
-    },
-    {
-      "value": 98.7,
-      "type": "Entrada",
-      "category": "Investimento",
-      "description": "Lucro do bitcoin",
-      "createdAt": "2022-09-15T03:10:23.483Z",
-      "id": 6
+      "createdAt": "2022-09-16T22:23:03.562Z",
+      "id": 13
     }
   ]
 }
