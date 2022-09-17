@@ -22,12 +22,14 @@ const LoginCard: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const navigate = useNavigate()
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: MouseEvent) => {
     const isNotCompleted = Object.values(formData).some((val) => val === '')
 
     if (isNotCompleted) {
       return
     }
+
+    event.preventDefault()
 
     setIsLoading(true)
 
@@ -105,7 +107,10 @@ const LoginCard: React.FC = () => {
           )}
         </InputGroup.Addon>
       </BaseInput>
-      <Style.DefaultButton onClick={handleSubmit} type="submit">
+      <Style.DefaultButton
+        onClick={(event: MouseEvent) => handleSubmit(event)}
+        type="submit"
+      >
         {!isLoading ? 'Login' : <Loader />}
       </Style.DefaultButton>
       <Style.DefaultLink to={'/cadastro'}>

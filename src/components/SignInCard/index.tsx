@@ -25,12 +25,14 @@ const SignInCard: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const navigate = useNavigate()
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: MouseEvent) => {
     const isNotCompleted = Object.values(formData).some((val) => val === '')
 
     if (isNotCompleted) {
       return
     }
+
+    event.preventDefault()
 
     setIsLoading(true)
 
@@ -168,7 +170,10 @@ const SignInCard: React.FC = () => {
           )}
         </InputGroup.Addon>
       </BaseInput>
-      <Style.DefaultButton type="submit" onClick={handleSubmit}>
+      <Style.DefaultButton
+        type="submit"
+        onClick={(event: MouseEvent) => handleSubmit(event)}
+      >
         {!isLoading ? 'Cadastrar-se' : <Loader />}
       </Style.DefaultButton>
       <Style.DefaultLink to={'/login'}>
