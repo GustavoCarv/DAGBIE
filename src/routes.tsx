@@ -5,6 +5,7 @@ import Login from './views/Login'
 import Dashboard from './views/Dashboard'
 import CreateTransaction from './views/CreateTransaction'
 import EditTransaction from './views/EditTransaction'
+import Error from './views/Error'
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
         {/* <Route path="/edicao/perfil/:id" element={<EditUserProfile />} /> */}
         <Route path="/registro/transacao" element={<CreateTransaction />} />
         <Route path="/edicao/transacao/:id" element={<EditTransaction />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   )
