@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.section`
     width: 100%;
     height: 100%;
-    display: flex: ;
+    display: flex ;
     align-items:center ;
 
 `;
@@ -15,7 +15,7 @@ export const FormWrapper = styled.main`
 
     display: flex;
     flex-direction: column;
-    align-items: center ;
+    align-items: center;
     justify-content: center;
 
     border-radius: 8px;
@@ -34,7 +34,7 @@ export const Form = styled.form`
     flex-direction: column;
     gap: 36px;
 
-    width: 100% ;
+    width: 100%;
 
     @media (max-width: 767px) {
         gap: 24px;
