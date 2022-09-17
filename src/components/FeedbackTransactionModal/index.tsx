@@ -4,7 +4,7 @@ import * as Style from '../ConfirmDeleteModal/styles'
 type FeedbackProps = {
   open: boolean;
   title: string;
-  description: string;
+  description?: string;
   onAccept: () => void;
   onClose: () => void;
 }
@@ -20,7 +20,7 @@ export const FeedbackTransactionModal = (props: FeedbackProps) => {
       </Modal.Body>
       <Style.Footer>
         <Button
-          style={{ marginBottom: '5px', background: '#00856F' }} 
+          style={{ marginBottom: '5px', background: '#00856F' }}
           onClick={ props.onAccept }
           appearance='primary'
         >

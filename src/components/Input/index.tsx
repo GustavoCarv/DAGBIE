@@ -1,16 +1,30 @@
+import React, { FocusEvent } from 'react'
 import * as Style from './styles'
 
 type InputProps = {
   children?: React.ReactNode
   placeholder?: string
   type?: string
+  onChangeEvent: (event: FocusEvent<HTMLInputElement>) => void
+  isRequired?: boolean
 }
 
-const BaseInput: React.FC<InputProps> = ({ children, placeholder, type }) => {
+const BaseInput: React.FC<InputProps> = ({
+  children,
+  placeholder,
+  type,
+  onChangeEvent,
+  isRequired,
+}) => {
   return (
     <Style.DefaultInputGroup inside>
       {children}
-      <Style.DefaultInput placeholder={placeholder} type={type} />
+      <Style.DefaultInput
+        placeholder={placeholder}
+        type={type}
+        onBlur={(e: FocusEvent<HTMLInputElement>) => onChangeEvent(e)}
+        required={isRequired}
+      />
     </Style.DefaultInputGroup>
   )
 }

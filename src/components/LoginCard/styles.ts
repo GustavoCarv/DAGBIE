@@ -7,11 +7,18 @@ export const DefaultButton = styled(Button)`
     height: 60px;
     background: ${({ theme }) => theme.colors.$brandGreen};
 
-    font-weight: 700;
     font-size: ${({ theme }) => theme.fontSizes.medium};
     line-height: 115%;
+    font-weight: 700;
 
     color: #f7f9f9;
+
+    &:hover,
+    :focus {
+        text-decoration: underline;
+        color: #f7f9f9;
+        background-color: ${({ theme }) => theme.colors.$brandGreenHover};
+    }
 `;
 
 export const DefaultLink = styled(Link)`
@@ -19,6 +26,7 @@ export const DefaultLink = styled(Link)`
 
     font-size: ${({ theme }) => theme.fontSizes.normal_plus};
     line-height: 115%;
+    font-weight: 700;
     text-align: center;
     color: #212529;
 
