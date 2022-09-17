@@ -32,9 +32,13 @@ export const FormWrapper = styled.main`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 36px;
 
     width: 100% ;
+
+    @media (max-width: 767px) {
+        gap: 24px;
+    }
 `;
 
 export const Title = styled.h2`

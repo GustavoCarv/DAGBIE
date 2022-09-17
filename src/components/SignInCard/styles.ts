@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 export const DefaultButton = styled(Button)`
     height: 60px;
     background: ${({ theme }) => theme.colors.$brandGreen};
+    margin-top: 24px;
 
     font-weight: 700;
     font-size: ${({ theme }) => theme.fontSizes.medium};
     line-height: 115%;
 
     color: #f7f9f9;
-
     &:hover,
     :focus {
         text-decoration: underline;
