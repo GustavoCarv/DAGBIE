@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    background-color: ${({ theme }) => theme.colors.$brandGreen};
+    background-color: ${({ theme }) => theme.colors.$brandGreenHover};
 
     min-height: 100vh;
 
     display: flex;
-    grid-template-rows: min-content 1fr;
     justify-content: center;
     align-items: center;
 
