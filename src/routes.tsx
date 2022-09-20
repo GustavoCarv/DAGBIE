@@ -16,7 +16,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/perfil/:id" element={<UserProfile />} />
+        <Route path="/perfil/" element={<UserProfile />} />  {/* TODO: colocar :id aqui quando a api estiver pronta */}
         {/* <Route path="/edicao/perfil/:id" element={<EditUserProfile />} /> */}
         <Route path="/registro/transacao" element={<CreateTransaction />} />
         <Route path="/edicao/transacao/:id" element={<EditTransaction />} />

@@ -6,13 +6,10 @@ export const Button = styled(IconButton)`
   ${({ theme }) => css`
     background: ${theme.colors.$brandGreen};
     position: fixed;
-    bottom: 30px;
-    right: 20px;
+    bottom: 60px;
+    right: 15px;
     &:hover {
       background: ${theme.colors.$brandGreenHover}
-    }
-    @media(max-width: 690px) {
-      bottom: 60px;
     }
   `};
 `

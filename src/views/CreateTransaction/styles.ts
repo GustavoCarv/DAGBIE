@@ -4,6 +4,8 @@ import { Form, Button } from 'rsuite'
 
 export const Container = styled.div`
   width: 95%;
+  margin-top: 110px;
+  margin-bottom: 150px;
 `
 export const Header = styled.div`
   text-align: center;

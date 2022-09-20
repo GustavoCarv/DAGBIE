@@ -1,5 +1,7 @@
 import React, { FocusEvent, useState } from 'react'
 import BaseInput from '../../components/Input'
+import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 import * as Styles from './styles'
 
 const EditUserProfile: React.FC = () => {
@@ -12,19 +14,7 @@ const EditUserProfile: React.FC = () => {
 
   return (
     <>
-      <div
-        style={{
-          height: 60,
-          width: '100%',
-          background: '#00453A',
-          color: '#fff',
-          position: 'fixed',
-          top: 0,
-          zIndex: 10,
-        }}
-      >
-        Header teste
-      </div>
+      <Header />
       <Styles.Container>
         <div>
           <Styles.Menu>
@@ -91,6 +81,7 @@ const EditUserProfile: React.FC = () => {
           </Styles.FormWrapper>
         </div>
       </Styles.Container>
+      <Footer />
     </>
   )
 }
