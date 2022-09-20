@@ -9,7 +9,7 @@ export const ContainerGeneral = styled.div`
   display: flex;
   flex-direction: column;
   gap: 25px;
-  margin: 30px auto 40px auto;
+  margin: 30px auto 90px auto;
   min-height: 186px;
   @media(max-width: 690px) {
     margin-bottom: 90px;
@@ -51,12 +51,16 @@ export const TransactionLine = styled.div`
     border-bottom: 1px solid #B0B9B4;
     .value {
       display: flex;
+      @media(min-width: 410px) {
+        width: 150px;
+      }
       p {
         color: ${theme.colors.black};
         margin-left: 10px;
       }
     }
     .category {
+      text-align: center;
       @media(max-width: 590px) {
         display: none;
       }
@@ -64,6 +68,10 @@ export const TransactionLine = styled.div`
     .date {
       @media(max-width: 590px) {
         margin-left: 25px;
+      }
+      @media(min-width: 410px) {
+        width: 200px;
+        text-align: right;
       }
     }
     @media(max-width: 410px) {

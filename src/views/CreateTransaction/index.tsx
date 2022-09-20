@@ -5,6 +5,8 @@ import {
   formatNumberToCurrencyInput, 
   formatCurrencyToNumber, 
 } from '../../utils/formatCurrency'
+import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 import api from '../../services/api'
 import { Form, ButtonToolbar } from 'rsuite'
 
@@ -48,6 +50,7 @@ const CreateTransaction = () => {
   ]
   return (
     <Style.Container>
+      <Header />
       <Style.Header>
         <Style.Title>Registrar transação</Style.Title>
       </Style.Header>
@@ -114,6 +117,7 @@ const CreateTransaction = () => {
           </ButtonToolbar>
         </Form.Group>
       </Style.FormContainer>
+      <Footer />
     </Style.Container>
   )
 }

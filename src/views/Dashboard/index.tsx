@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import * as Style from './styles'
 import { useNavigate } from 'react-router-dom'
 import { BalanceChart } from '../../components/BalanceChart'
+import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 import { LastWeekTransactionsCard } from '../../components/LastWeekTransactionsCard'
 import { ButtonCreateTransaction } from '../../components/ButtonCreateTransaction'
 import { TransactionsModal } from '../../components/TransactionsModal'
@@ -33,7 +35,7 @@ const Dashboard = () => {
   const totalValue = inputValue - outputValue
   return ( 
     <Style.Container>
-      <div style={{height:60, width:"100%", background:"green", color: '#fff', position: 'fixed', top:0, zIndex:10 }}>Header teste</div>
+      <Header />
       <Style.WelcomeUser>
         <h3>Olá, Antônio</h3>
         <Style.ButtonT 
@@ -55,7 +57,7 @@ const Dashboard = () => {
         open={showTransactions}
         onClose={() => setShowTransactions(false)}
       />
-      <div style={{height:50, width:"100%", background:"green", color: '#fff' }}>Footer teste</div>
+      <Footer />
     </Style.Container>
   )
 }

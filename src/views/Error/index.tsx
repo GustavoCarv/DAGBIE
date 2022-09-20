@@ -13,7 +13,6 @@ const Error = () => {
 
   return (
     <Style.ContainerGeneral>
-      <div style={{height:60, width:"100%", background:"green", color: '#fff', position: 'fixed', top:0, zIndex:10 }}>Header teste</div>
       <Style.Container>
         <h2>Ops! Página não encontrada</h2>
         <Style.ButtonHome
@@ -24,7 +23,6 @@ const Error = () => {
         </Style.ButtonHome>
         <img src={NOTFOUND} width={500} height={500}/>
       </Style.Container>
-      <div style={{ height: 50, width: "100%", background: "green", color: '#fff' }}>Footer teste</div>
     </Style.ContainerGeneral>
   )
 }

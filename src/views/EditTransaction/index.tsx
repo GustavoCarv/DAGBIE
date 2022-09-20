@@ -3,6 +3,8 @@ import * as Style from './styles'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Form, ButtonToolbar } from 'rsuite'
 import api from '../../services/api'
+import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 import { formatNumberToCurrencyInput, formatCurrencyToNumber } from '../../utils/formatCurrency'
 
 type IParamsProps = {
@@ -62,6 +64,7 @@ const EditTransaction = () => {
   ]
   return (
     <Style.Container>
+      <Header />
       <Style.Header>
         <Style.Title>Editar transação</Style.Title>
       </Style.Header>
@@ -128,6 +131,7 @@ const EditTransaction = () => {
           </ButtonToolbar>
         </Form.Group>
       </Style.FormContainer>
+      <Footer />
     </Style.Container>
   )
 }
