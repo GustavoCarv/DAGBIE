@@ -75,6 +75,7 @@ export const Menu = styled.nav`
     }
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const TitleMenu = styled.h4<any>`
     cursor: pointer;
     border-radius: 8px;

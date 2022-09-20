@@ -16,7 +16,7 @@ const BaseInput: React.FC<InputProps> = ({
   type,
   onChangeEvent,
   isRequired,
-  isDisabled
+  isDisabled,
 }) => {
   return (
     <Style.DefaultInputGroup inside>
