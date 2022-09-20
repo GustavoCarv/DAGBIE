@@ -21,7 +21,7 @@ export const Footer = () => {
           <PageIcon style={{ fontSize: '1.5em' }}/>
           <p>Registrar</p>
         </Style.Option>
-        <Style.Option onClick={() => alert('ir para perfil de usuário')} >
+        <Style.Option onClick={() => navigate('/perfil')} >
           <img 
             className='userIcon'
             src={UserIcon} 
