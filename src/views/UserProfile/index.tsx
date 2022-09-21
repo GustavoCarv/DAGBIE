@@ -1,16 +1,33 @@
-import React, { FocusEvent, useState } from 'react'
+import React, { FocusEvent, useState, useEffect } from 'react'
+import api from '../../services/api'
+
+import * as Styles from './styles'
 import BaseInput from '../../components/Input'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
-import * as Styles from './styles'
 
 const EditUserProfile: React.FC = () => {
   const [isEditable, setIsEditable] = useState(false)
   const [userData, setUserData] = useState({
     nome: '',
     email: '',
-    senha: '',
+    senha_atual: '',
+    nova_senha: ''
   })
+
+  const handleInfoUser = async () => {
+       await api.get('/logged')
+       .then ( res =>  {
+         setUserData(res.data.exibe_logado)
+       })
+       .catch((error) => {
+         console.log(error)
+       })
+  }
+
+  useEffect (() => {
+    handleInfoUser()
+  }, [])
 
   return (
     <>
@@ -32,6 +49,7 @@ const EditUserProfile: React.FC = () => {
               {' '}
               Editar dados
             </Styles.TitleMenu>
+            
           </Styles.Menu>
           <Styles.FormWrapper>
             <div>
@@ -42,6 +60,7 @@ const EditUserProfile: React.FC = () => {
                 <BaseInput
                   placeholder="nome"
                   type="text"
+                  value={userData.nome}
                   onChangeEvent={(event: FocusEvent<HTMLInputElement>) => {
                     setUserData({ ...userData, nome: event.target.value })
                   }}
@@ -53,32 +72,49 @@ const EditUserProfile: React.FC = () => {
                 <BaseInput
                   placeholder="email"
                   type="email"
+                  value={userData.email}
                   onChangeEvent={(event: FocusEvent<HTMLInputElement>) => {
                     setUserData({ ...userData, email: event.target.value })
                   }}
                   isDisabled={isEditable ? false : true}
                 ></BaseInput>
               </label>
-              <label>
-                <h4>Senha :</h4>
-                <BaseInput
-                  placeholder="senha"
-                  type="password"
-                  onChangeEvent={(event: FocusEvent<HTMLInputElement>) => {
-                    setUserData({ ...userData, senha: event.target.value })
-                  }}
-                  isDisabled={isEditable ? false : true}
-                ></BaseInput>
-              </label>
-
               <Styles.DefaultButton
                 type="submit"
                 disabled={isEditable ? false : true}
               >
                 Salvar
               </Styles.DefaultButton>
+              { isEditable &&  <label>
+                <h4>Senha Atual:</h4>
+                <BaseInput
+                  placeholder="senha atual"
+                  type="password"
+                  onChangeEvent={(event: FocusEvent<HTMLInputElement>) => {
+                    setUserData({ ...userData, senha_atual: event.target.value })
+                  }}
+                ></BaseInput>
+              </label>}
+              { isEditable && 
+                <label>
+                  <h4>Nova Senha :</h4>
+                  <BaseInput
+                    placeholder="nova senha"
+                    type="password"
+                    onChangeEvent={(event: FocusEvent<HTMLInputElement>) => {
+                      setUserData({ ...userData, nova_senha: event.target.value })
+                    }}
+                  ></BaseInput>
+                </label>
+              }
+              <Styles.DefaultButton
+                type="submit"
+                disabled={isEditable ? false : true}
+              >
+                Salvar nova senha
+              </Styles.DefaultButton>       
             </div>
-          </Styles.FormWrapper>
+          </Styles.FormWrapper>         
         </div>
       </Styles.Container>
       <Footer />
