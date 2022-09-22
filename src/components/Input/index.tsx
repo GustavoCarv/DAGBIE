@@ -8,7 +8,8 @@ type InputProps = {
   onChangeEvent: (event: FocusEvent<HTMLInputElement>) => void
   isRequired?: boolean,
   isDisabled?: boolean,
-  value?: string
+  value?: string,
+  name?: string
 }
 
 const BaseInput: React.FC<InputProps> = ({
@@ -19,6 +20,7 @@ const BaseInput: React.FC<InputProps> = ({
   isRequired,
   isDisabled,
   value,
+  name,
 }) => {
   return (
     <Style.DefaultInputGroup inside>
@@ -26,10 +28,11 @@ const BaseInput: React.FC<InputProps> = ({
       <Style.DefaultInput
         placeholder={placeholder}
         type={type}
-        onBlur={(e: FocusEvent<HTMLInputElement>) => onChangeEvent(e)}
+        onChange={(e: FocusEvent<HTMLInputElement>) => onChangeEvent(e)}
         required={isRequired}
         disabled={isDisabled}
         value={value}
+        name={name}
       />
     </Style.DefaultInputGroup>
   )
