@@ -10,12 +10,11 @@ export const DefaultInput = styled.input`
         border: none;
         outline: transparent;
         width: 100%;
-        padding: 16px;
+        padding: 16px 16px 16px 38px;
         font-size: ${theme.fontSizes.normal_plus};
     `}
 `;
 
 export const DefaultInputGroup = styled(InputGroup)`
-    /*   border: 1px solid ${({ theme }) => theme.colors.black}; */
     background-color: ${({ theme }) => theme.colors.$brandGreenLight};
 `;
