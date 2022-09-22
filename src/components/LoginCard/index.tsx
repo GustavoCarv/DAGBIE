@@ -1,8 +1,6 @@
 import { InputGroup, Loader } from 'rsuite'
 import WrapperCard from '../WrapperCard'
 import BaseInput from '../../components/Input'
-import VisibleIcon from '@rsuite/icons/Visible'
-import UnvisibleIcon from '@rsuite/icons/Unvisible'
 import EmailIcon from '@rsuite/icons/Email'
 import { FeedbackTransactionModal } from '../FeedbackTransactionModal'
 
@@ -11,6 +9,7 @@ import * as Style from './styles'
 import axios from 'axios'
 import { FocusEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { VisibleIconPassword } from '../VisibleIconPassword'
 
 const LoginCard: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -83,29 +82,7 @@ const LoginCard: React.FC = () => {
           setFormData({ ...formData, senha: event.target.value })
         }}
       >
-        <InputGroup.Addon
-          style={{
-            top: '50%',
-            transform: 'translate(0, -50%)',
-          }}
-          onClick={() => {
-            setShowPassword(!showPassword)
-          }}
-        >
-          {showPassword ? (
-            <VisibleIcon
-              style={{
-                fill: '#00453A',
-              }}
-            />
-          ) : (
-            <UnvisibleIcon
-              style={{
-                fill: '#00453A',
-              }}
-            />
-          )}
-        </InputGroup.Addon>
+         <VisibleIconPassword showPassword={showPassword} setShowPassword={setShowPassword}/>
       </BaseInput>
       <Style.DefaultButton
         onClick={(event: MouseEvent) => handleSubmit(event)}
