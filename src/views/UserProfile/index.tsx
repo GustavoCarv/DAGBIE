@@ -1,4 +1,6 @@
 import React, { FocusEvent, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import api from '../../services/api'
 
 import * as Styles from './styles'
@@ -6,9 +8,11 @@ import BaseInput from '../../components/Input'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { FeedbackTransactionModal } from '../../components/FeedbackTransactionModal'
+import { VisibleIconPassword } from '../../components/VisibleIconPassword'
 
 
 const EditUserProfile: React.FC = () => {
+  const navigate = useNavigate()
   const [isEditable, setIsEditable] = useState(false)
   const [userData, setUserData] = useState({
     nome: '',
@@ -16,6 +20,7 @@ const EditUserProfile: React.FC = () => {
     id_usuario: '',
     senha_atual: '',
     nova_senha: '',
+    confirm_senha: '',
   })
   const [ previousValues, setPreviousValues ] = useState({
     nome: '',
@@ -23,6 +28,11 @@ const EditUserProfile: React.FC = () => {
   })
   const [ openSuccess, setOpenSuccess ] = useState(false)
   const [ openError, setOpenError ] = useState(false)
+  const [ description, setDescription ] = useState(
+    'Ocorreu um erro ao editar os dados do perfil. Por favor, tente novamente mais tarde.',
+    )
+  const [ showPassword, setShowPassword ] = useState(false)
+  const [ openConfirm, setOpenConfirm] = useState(false)
 
   const handleInfoUser = async () => {
        await api.get('/logged')
@@ -55,6 +65,42 @@ const EditUserProfile: React.FC = () => {
       })
     }
     }
+
+    const handleSubmitEditPassword = async () => {
+      if (userData.senha_atual == '' || userData.nova_senha == ''){
+        setOpenError(true)
+      } else{
+        const body = {
+          id_usuario: userData.id_usuario,
+          senha_atual: userData.senha_atual,
+          nova_senha: userData.nova_senha,
+        }
+        await api.post('/edit_password', body)
+        .then ( (res) =>  {
+          if (res.data.edit) {
+            setOpenSuccess(true)
+          } else {
+            setDescription('A senha atual não está correta. Tente novamente')
+            setOpenError(true)
+          }
+        })
+        .catch(() => {
+          setOpenError(true)
+        })
+      }
+      }
+
+    const handleSubmitDeleteProfile = async () => {
+      const body = {
+        id_usuario: userData.id_usuario,
+      }
+      await api.post('/del_user', body)
+      .then ( () =>  navigate('/'))
+      .catch(() => {
+        setDescription('Ocorreu um erro ao excluir o perfil. Por favor, tente novamente mais tarde.')
+        setOpenError(true)
+      })
+      }
 
   useEffect (() => {
     handleInfoUser()
@@ -118,40 +164,77 @@ const EditUserProfile: React.FC = () => {
               >
                 Salvar
               </Styles.DefaultButton>
-              { isEditable &&  <label>
+              { isEditable &&  <>
+              <label>
                 <h4>Senha Atual:</h4>
                 <BaseInput
                   placeholder="senha atual"
-                  type="password"
+                  type={`${showPassword ? 'text' : 'password'}`}
                   onChangeEvent={(event: FocusEvent<HTMLInputElement>) => {
                     setUserData({ ...userData, senha_atual: event.target.value })
                   }}
-                ></BaseInput>
-              </label>}
-              { isEditable && 
+                >
+                  <VisibleIconPassword showPassword={showPassword} setShowPassword={setShowPassword}/>
+                </BaseInput>
+              </label>         
                 <label>
                   <h4>Nova Senha :</h4>
                   <BaseInput
                     placeholder="nova senha"
-                    type="password"
+                    type={`${showPassword ? 'text' : 'password'}`}
                     onChangeEvent={(event: FocusEvent<HTMLInputElement>) => {
                       setUserData({ ...userData, nova_senha: event.target.value })
                     }}
-                  ></BaseInput>
+                  >
+                    <VisibleIconPassword showPassword={showPassword} setShowPassword={setShowPassword}/>
+                  </BaseInput>
                 </label>
-              }
+                <label>
+                  <h4>Confirme nova senha :</h4>
+                  <BaseInput
+                    placeholder="nova senha"
+                    type={`${showPassword ? 'text' : 'password'}`}
+                    onChangeEvent={(event: FocusEvent<HTMLInputElement>) => {
+                      setUserData({ ...userData, confirm_senha: event.target.value })
+                    }}
+                  >
+                    <VisibleIconPassword showPassword={showPassword} setShowPassword={setShowPassword}/>
+                  </BaseInput>
+                </label>
+                {userData.confirm_senha !== userData.nova_senha ?
+                  <p style={{color: 'red'}}>As senhas não coincidem</p>
+                  :
+                  <p style={{color: 'green'}}>Senhas coincidem</p>
+                }
+                </>}
               <Styles.DefaultButton
                 type="submit"
                 disabled={isEditable ? false : true}
+                onClick={() => {
+                  if (userData.confirm_senha !== userData.nova_senha){
+                    setDescription('As senhas não coincidem, tente novamente.')
+                    setOpenError(true)
+                  } else {
+                    handleSubmitEditPassword()
+                  }
+                }}
               >
                 Salvar nova senha
-              </Styles.DefaultButton>       
+              </Styles.DefaultButton>  
+              <Styles.DefaultButton
+                style={{backgroundColor: 'red'}}
+                type="submit"
+                disabled={isEditable ? false : true}
+                onClick={() => setOpenConfirm(true)}
+              >
+                Excluir perfil
+              </Styles.DefaultButton>        
             </div>
             <FeedbackTransactionModal
               open={openSuccess}
               title='Sucesso!'
               description=
-                'Dados de perfil editados com sucesso'
+                'Dados de perfil/senha editados com sucesso'
               onAccept={() => {
                 setOpenSuccess(false)
               }}
@@ -162,13 +245,24 @@ const EditUserProfile: React.FC = () => {
              <FeedbackTransactionModal
               open={openError}
               title='Erro!'
-              description=
-                'Ocorreu um erro ao editar os dados do perfil. Por favor, tente novamente mais tarde.'
+              description={description}
               onAccept={() => {
                 setOpenError(false)
               }}
               onClose={() => {
                 setOpenError(false)
+              }}
+             />
+             <FeedbackTransactionModal
+              open={openConfirm}
+              title='Deseja excluir o perfil?'
+              description={'Tem certeza que deseja excluir esse perfil? Essa ação é irrevogável'}
+              onAccept={() => {
+                setOpenConfirm(false)
+                handleSubmitDeleteProfile()
+              }}
+              onClose={() => {
+                setOpenConfirm(false)
               }}
              />
           </Styles.FormWrapper>         
