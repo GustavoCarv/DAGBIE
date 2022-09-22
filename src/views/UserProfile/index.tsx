@@ -1,4 +1,6 @@
 import React, { FocusEvent, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import api from '../../services/api'
 
 import * as Styles from './styles'
@@ -10,6 +12,7 @@ import { VisibleIconPassword } from '../../components/VisibleIconPassword'
 
 
 const EditUserProfile: React.FC = () => {
+  const navigate = useNavigate()
   const [isEditable, setIsEditable] = useState(false)
   const [userData, setUserData] = useState({
     nome: '',
@@ -28,7 +31,8 @@ const EditUserProfile: React.FC = () => {
   const [ description, setDescription ] = useState(
     'Ocorreu um erro ao editar os dados do perfil. Por favor, tente novamente mais tarde.',
     )
-  const [showPassword, setShowPassword] = useState(false)
+  const [ showPassword, setShowPassword ] = useState(false)
+  const [ openConfirm, setOpenConfirm] = useState(false)
 
   const handleInfoUser = async () => {
        await api.get('/logged')
@@ -84,6 +88,18 @@ const EditUserProfile: React.FC = () => {
           setOpenError(true)
         })
       }
+      }
+
+    const handleSubmitDeleteProfile = async () => {
+      const body = {
+        id_usuario: userData.id_usuario,
+      }
+      await api.post('/del_user', body)
+      .then ( () =>  navigate('/'))
+      .catch(() => {
+        setDescription('Ocorreu um erro ao excluir o perfil. Por favor, tente novamente mais tarde.')
+        setOpenError(true)
+      })
       }
 
   useEffect (() => {
@@ -204,7 +220,15 @@ const EditUserProfile: React.FC = () => {
                 }}
               >
                 Salvar nova senha
-              </Styles.DefaultButton>       
+              </Styles.DefaultButton>  
+              <Styles.DefaultButton
+                style={{backgroundColor: 'red'}}
+                type="submit"
+                disabled={isEditable ? false : true}
+                onClick={() => setOpenConfirm(true)}
+              >
+                Excluir perfil
+              </Styles.DefaultButton>        
             </div>
             <FeedbackTransactionModal
               open={openSuccess}
@@ -227,6 +251,18 @@ const EditUserProfile: React.FC = () => {
               }}
               onClose={() => {
                 setOpenError(false)
+              }}
+             />
+             <FeedbackTransactionModal
+              open={openConfirm}
+              title='Deseja excluir o perfil?'
+              description={'Tem certeza que deseja excluir esse perfil? Essa ação é irrevogável'}
+              onAccept={() => {
+                setOpenConfirm(false)
+                handleSubmitDeleteProfile()
+              }}
+              onClose={() => {
+                setOpenConfirm(false)
               }}
              />
           </Styles.FormWrapper>         
