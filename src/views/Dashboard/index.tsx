@@ -15,29 +15,32 @@ const Dashboard = () => {
   const [ showTransactions, setShowTransactions ] = useState(false)
   const [ transactions, setTransactions ] = useState<Transaction[]>([])
   const getTransactions = async () => {
-    await api.get('/transactions')
-      .then(res => setTransactions(res.data))
+    await api.get('/list_transactions?id_usuario=38')
+      .then(res => {
+        console.log(res.data.lista_transacoes)
+        setTransactions(res.data.lista_transacoes)
+      })
       .catch(err => console.error(err.message))
   }
   useEffect(() => {
     getTransactions()
   }, [transactions])
   const inputValue = transactions
-    .filter(t => (t.type === 'Entrada'))
+    .filter(t => (t.tipo === 'Entrada'))
     .reduce((result, amount) => {
-    return result + amount.value
+    return result + amount.valor
   }, 0)
   const outputValue = transactions
-    .filter(t => (t.type === 'Saída'))
+    .filter(t => (t.tipo === 'Saída'))
     .reduce((result, amount) => {
-    return result + amount.value
+    return result + amount.valor
   }, 0)
   const totalValue = inputValue - outputValue
   return ( 
     <Style.Container>
       <Header />
       <Style.WelcomeUser>
-        <h3>Olá, Antônio</h3>
+        {/* <h3>Olá, Antônio</h3> */}
         <Style.ButtonT 
           size="lg"
           onClick={() => navigate('/registro/transacao')}

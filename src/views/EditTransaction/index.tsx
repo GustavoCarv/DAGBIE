@@ -22,25 +22,28 @@ const EditTransaction = () => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
   const findTransaction = async (id: string) => {
-    const res = await api.get(`transactions/${id}`)
-    setValue({ value: res.data.value })
-    setType(res.data.type)
-    setCategory(res.data.category)
-    setDescription(res.data.description)
+    const res = await api.get(`open_transaction?id_transacao=${id}`)
+    setValue({ value: res.data.exibe_transacao.valor })
+    setType(res.data.exibe_transacao.tipo)
+    setCategory(res.data.exibe_transacao.categoria)
+    setDescription(res.data.exibe_transacao.descricao)
   }
-  const editTransaction = async (id?: string) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
+  const idN = parseInt(id)
+  const editTransaction = async () => {
     if (value.value === '' || type === '' || category === '' ) {
       alert('Por favor, preencha os campos obrigatórios.')
     } else {
       const newValue = formatCurrencyToNumber(value.value)
       const body = { 
-        value: newValue, 
-        type, 
-        category, 
-        description, 
-        createdAt: new Date(Date.now()),  // TODO: excluir esta linha quando estiver com api de verdade
+        id_transacao: idN,
+        valor: newValue, 
+        tipo: type, 
+        categoria: category, 
+        descricao: description, 
       }
-      await api.put(`transactions/${id}`, body)
+      await api.post(`edit_transaction`, body)
       .then(() => {
         alert('Transação editada com sucesso!')
         navigate('/dashboard')
@@ -118,7 +121,7 @@ const EditTransaction = () => {
         <Form.Group>
           <ButtonToolbar style={{ float:'right' }}>
             <Style.ButtonR  
-              onClick={() => editTransaction(id)}
+              onClick={() => editTransaction()}
             >
               Salvar
             </Style.ButtonR>

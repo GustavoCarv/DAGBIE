@@ -1,10 +1,9 @@
 export interface Transaction {
-  id?: number;
-  type: string;
-  value: number;
-  category: string;
-  description?: string;
-  userId?: number;
-  createdAt?: Date;
-  updatedAt?: Date;
+  id_transacao?: number;
+  tipo: string;
+  valor: number;
+  categoria: string;
+  descricao?: string;
+  id_usuario?: number;
+  data_criacao?: Date;
 }

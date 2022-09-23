@@ -27,14 +27,14 @@ export const LastWeekTransactionsCard = (props: LastWeekProps) => {
           : (props.transactions.map(t => (
               <Style.TransactionLine>
                 <div className='value'>
-                  {t.type === 'Saída' 
+                  {t.tipo === 'Saída' 
                     ? ( <SortUpIcon color='#F03737' style={{ fontSize: '1.3rem' }} /> )
                     : ( <SortDownIcon color='green' style={{ fontSize: '1.3rem' }} /> )
                   }
-                  <p>{formatNumberToCurrencyOutput(t.value)}</p>
+                  <p>{formatNumberToCurrencyOutput(t.valor)}</p>
                 </div>
-                <p className='category'>{t.category}</p>
-                <p className='date'>{formatDate(t?.createdAt)}</p>
+                <p className='category'>{t.categoria}</p>
+                <p className='date'>{formatDate(t?.data_criacao)}</p>
               </Style.TransactionLine>
             ))
           )
