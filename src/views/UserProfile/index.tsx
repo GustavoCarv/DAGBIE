@@ -185,11 +185,11 @@ const EditUserProfile: React.FC = () => {
                     <VisibleIconPassword showPassword={showPassword} setShowPassword={setShowPassword}/>
                   </BaseInput>
                 </label>
-                {userData.confirm_senha !== userData.nova_senha ?
+                {/* {userData.confirm_senha !== userData.nova_senha ?
                   <p style={{color: 'red'}}>As senhas não coincidem</p>
                   :
                   <p style={{color: 'green'}}>Senhas coincidem</p>
-                }
+                } */}
                 </>}
               <Styles.DefaultButton
                 type="submit"

@@ -37,13 +37,13 @@ export const Header = () => {
           />
           <p>Perfil</p>
         </Style.Option>
-        <Style.Option onClick={() => alert('fazer logout')}>
+        <Style.Option onClick={() => navigate('/')}>
           <ExitIcon style={{ fontSize: '1.5em' }} />
           <p>Logout</p>
         </Style.Option>
       </Style.HeaderDesktop>
       <Style.HeaderMobile>
-        <Style.Option onClick={() => alert('fazer logout')}>
+        <Style.Option onClick={() => navigate('/')}>
           <ExitIcon />
           <p>Logout</p>
         </Style.Option>
