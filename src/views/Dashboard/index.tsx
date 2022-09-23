@@ -14,8 +14,16 @@ const Dashboard = () => {
   const navigate = useNavigate()
   const [ showTransactions, setShowTransactions ] = useState(false)
   const [ transactions, setTransactions ] = useState<Transaction[]>([])
+  // const [ userId, setUserId ] = useState('')
+  // const getUserNew = () => {
+  //   const userLogged = localStorage.getItem('user')
+  //   if(userLogged) {
+  //     const foundUser = JSON.parse(userLogged);
+  //     setUserId(foundUser.id_usuario)
+  //   }
+  // }
   const getTransactions = async () => {
-    await api.get('/list_transactions?id_usuario=38')
+    await api.get(`/list_transactions?id_usuario=1`)
       .then(res => {
         console.log(res.data.lista_transacoes)
         setTransactions(res.data.lista_transacoes)
@@ -24,6 +32,7 @@ const Dashboard = () => {
   }
   useEffect(() => {
     getTransactions()
+    // getUserNew()
   }, [transactions])
   const inputValue = transactions
     .filter(t => (t.tipo === 'Entrada'))
@@ -40,7 +49,7 @@ const Dashboard = () => {
     <Style.Container>
       <Header />
       <Style.WelcomeUser>
-        {/* <h3>Olá, Antônio</h3> */}
+        <h3>Olá, Ivan</h3>
         <Style.ButtonT 
           size="lg"
           onClick={() => navigate('/registro/transacao')}

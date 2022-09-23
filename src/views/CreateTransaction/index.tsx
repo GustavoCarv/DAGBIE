@@ -16,6 +16,17 @@ const CreateTransaction = () => {
   const [ type, setType ] = useState('')
   const [ category, setCategory ] = useState('')
   const [ description, setDescription ] = useState('')
+  // const [ userId, setUserId ] = useState(0)
+  // const getUserNew = () => {
+  //   const userLogged = localStorage.getItem('user')
+  //   if(userLogged) {
+  //     const foundUser = JSON.parse(userLogged);
+  //     setUserId(foundUser.id_usuario)
+  //   }
+  // }
+  // useEffect(() => {
+  //   getUserNew()
+  // }, [])
   const changeValue = (e: ChangeEvent<HTMLInputElement>) => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
@@ -29,7 +40,7 @@ const CreateTransaction = () => {
         tipo: type, 
         categoria: category, 
         descricao: description,
-        id_usuario: 38,
+        id_usuario: 1,
       } 
       await api.post('/create_transaction', body)
         .then(() => {

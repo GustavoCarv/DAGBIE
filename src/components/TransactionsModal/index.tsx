@@ -17,6 +17,7 @@ export const TransactionsModal = (props: TransactionsProps) => {
   const [ transactions, setTransactions ] = useState<Transaction[]>([])
   const [ type, setType ] = useState('')
   const [ category, setCategory ] = useState('')
+  // const [ userId, setUserId ] = useState(0)
   const categories = [
     'Casa',
     'Investimento',
@@ -26,8 +27,16 @@ export const TransactionsModal = (props: TransactionsProps) => {
     'Compras',
     'Outro',
   ]
+  // const getUserNew = () => {
+  //   const userLogged = localStorage.getItem("user")
+  //   if(userLogged) {
+  //     const foundUser = JSON.parse(userLogged);
+  //     setUserId(foundUser.id_usuario)
+  //   }
+  // }
+  // console.log(userId)
   const getTransactions = async () => {
-    await api.get('/list_transactions?id_usuario=38')
+    await api.get(`/list_transactions?id_usuario=1`)
       .then(res => setTransactions(res.data.lista_transacoes))
       .catch(err => console.error(err.message))
   }
@@ -60,6 +69,7 @@ export const TransactionsModal = (props: TransactionsProps) => {
   }
   useEffect(() => {
     getTransactions()
+    // getUserNew()
   }, [])  
   return (
     <Style.Container

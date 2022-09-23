@@ -44,7 +44,8 @@ const SignInCard: React.FC = () => {
     try {
       axios
         .post('https://devfortech.herokuapp.com/api/create_user', formData)
-        .then(() => {
+        .then((res) => {
+          localStorage.setItem("user", res.data.logged)
           setTimeout(() => {
             navigate('/dashboard')
           }, 2000)
