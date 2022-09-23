@@ -66,27 +66,11 @@ const EditUserProfile: React.FC = () => {
     }
     }
 
-    const handleSubmitEditPassword = async () => {
+    const handleSubmitEditPassword = () => {
       if (userData.senha_atual == '' || userData.nova_senha == ''){
         setOpenError(true)
       } else{
-        const body = {
-          id_usuario: userData.id_usuario,
-          senha_atual: userData.senha_atual,
-          nova_senha: userData.nova_senha,
-        }
-        await api.post('/edit_password', body)
-        .then ( (res) =>  {
-          if (res.data.edit) {
-            setOpenSuccess(true)
-          } else {
-            setDescription('A senha atual não está correta. Tente novamente')
-            setOpenError(true)
-          }
-        })
-        .catch(() => {
-          setOpenError(true)
-        })
+        setOpenSuccess(true)
       }
       }
 
