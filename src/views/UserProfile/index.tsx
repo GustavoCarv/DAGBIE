@@ -15,9 +15,9 @@ const EditUserProfile: React.FC = () => {
   const navigate = useNavigate()
   const [isEditable, setIsEditable] = useState(false)
   const [userData, setUserData] = useState({
-    nome: '',
-    email: '',
-    id_usuario: '',
+    nome: 'Ivan',
+    email: 'ivanoliveira@gmail.com',
+    id_usuario: '1',
     senha_atual: '',
     nova_senha: '',
     confirm_senha: '',
