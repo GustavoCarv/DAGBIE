@@ -15,23 +15,23 @@ export const TransactionCard = (props: TransactionProps) => {
     <Style.Container>
       <Style.Header>
         <h4>
-          {props.type === 'Saída' 
+          {props.tipo === 'Saída' 
             ? ( <SortUpIcon color='#F03737' /> )
             : ( <SortDownIcon color='green' /> )
-          } { formatNumberToCurrencyOutput(props.value) }
+          } { formatNumberToCurrencyOutput(props.valor) }
         </h4>
       </Style.Header>
       <Style.Body>
-      <h5>{ props.category }</h5>
+      <h5>{ props.categoria }</h5>
         { 
-          props.description && (
-            <p title={props.description}>{ props.description }</p>
+          props.descricao && (
+            <p title={props.descricao}>{ props.descricao }</p>
           )
         }
       </Style.Body>
       <Style.Footer>
-        {props.createdAt && (
-          <p>{ formatDate(props.createdAt) }</p>
+        {props.data_criacao && (
+          <p>{ formatDate(props.data_criacao) }</p>
         )}
         <div>
           <Style.IconEdit onClick={ props.onEdit } />

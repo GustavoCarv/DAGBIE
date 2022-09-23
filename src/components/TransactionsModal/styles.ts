@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import 'rsuite/dist/rsuite.css'
 import { Modal, Button } from 'rsuite'
 
 export const Container = styled(Modal)`
@@ -16,6 +17,16 @@ export const Header = styled(Modal.Header)`
     width: 260px;
   }
 `
+export const Select = styled.select`
+  width: 100%;
+  outline: transparent;
+  border-radius: 4px;
+  padding: 7px;
+  border: 0.5px solid grey;
+  option {
+    height: 20px;
+  }
+`
 export const FilterButton = styled(Button)`
   border-radius: 50px; 
   color: #00453a; 
@@ -29,6 +40,24 @@ export const FilterButton = styled(Button)`
   }
   @media(max-width: 405px) {
     width: 100px;
+  }
+`
+export const ContainerFilter = styled(Modal)`
+  ${({ theme }) => css`
+    margin-top: 80px;
+    font-size: ${theme.fontSizes.normal};
+    width: 315px;
+    text-align: center;
+    z-index: 10;
+  `}
+`
+export const ButtonT = styled(Button)`
+  background: #00856F;
+  color: #fff;
+  border-radius: 50px;
+  &:hover {
+    background: #00856F;
+    color: #fff;
   }
 `
 export const ModalTitle = styled(Modal.Title)`

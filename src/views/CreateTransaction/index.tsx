@@ -25,13 +25,13 @@ const CreateTransaction = () => {
     } else {
       const newValue = formatCurrencyToNumber(value.value)
       const body = {
-        value: newValue, 
-        type: type, 
-        category: category, 
-        description: description,
-        createdAt: new Date(Date.now()), // TODO: excluir essa linha quando tiver com a api de verdade
+        valor: newValue, 
+        tipo: type, 
+        categoria: category, 
+        descricao: description,
+        id_usuario: 38,
       } 
-      await api.post('/transactions', body)
+      await api.post('/create_transaction', body)
         .then(() => {
           alert('Transação criada com sucesso!')
           navigate('/dashboard')

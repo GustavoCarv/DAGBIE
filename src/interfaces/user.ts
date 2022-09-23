@@ -1,11 +1,7 @@
-import { Transaction } from './transaction'
-
 export interface User {
-  id?: number;
-  name: string;
+  id_usuario?: number;
+  nome: string;
   email: string;
-  password?: string;
-  transactions?: Transaction[];
-  createdAt?: Date;
-  updatedAt?: Date;
+  senha?: string;
+  data_criacao?: Date;
 }
