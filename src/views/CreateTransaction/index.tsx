@@ -1,9 +1,9 @@
 import React, { useState, ChangeEvent } from 'react'
 import * as Style from './styles'
 import { useNavigate } from 'react-router-dom'
-import { 
-  formatNumberToCurrencyInput, 
-  formatCurrencyToNumber, 
+import {
+  formatNumberToCurrencyInput,
+  formatCurrencyToNumber,
 } from '../../utils/formatCurrency'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
@@ -36,12 +36,12 @@ const CreateTransaction = () => {
     } else {
       const newValue = formatCurrencyToNumber(value.value)
       const body = {
-        valor: newValue, 
-        tipo: type, 
-        categoria: category, 
+        valor: newValue,
+        tipo: type,
+        categoria: category,
         descricao: description,
         id_usuario: 1,
-      } 
+      }
       await api.post('/create_transaction', body)
         .then(() => {
           alert('Transação criada com sucesso!')
@@ -69,7 +69,7 @@ const CreateTransaction = () => {
         <Form.Group controlId='value'>
           <Form.ControlLabel >Valor: <span>*</span></Form.ControlLabel>
           <Style.Input
-            name='value' 
+            name='value'
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               changeValue(formatNumberToCurrencyInput(e))
             }}
@@ -80,7 +80,7 @@ const CreateTransaction = () => {
         <Form.Group controlId='type'>
           <Form.ControlLabel>Tipo (Entrada / Saída): <span>*</span></Form.ControlLabel>
           <Style.Select
-            name='type' 
+            name='type'
             onChange={e => setType(e.target.value)}
             value={type}
           >
@@ -92,20 +92,20 @@ const CreateTransaction = () => {
         <Form.Group controlId='category'>
           <Form.ControlLabel>Categoria: <span>*</span></Form.ControlLabel>
           <Style.Select
-            name='category' 
+            name='category'
             onChange={e => setCategory(e.target.value)}
             value={category}
           >
             <option value=''></option>
             {categories.map(category => (
-              <option value={category}>{category}</option>
+              <option key={category} value={category}>{category}</option>
             ))}
           </Style.Select>
         </Form.Group>
         <Form.Group controlId='description'>
           <Form.ControlLabel>Descrição (opcional):</Form.ControlLabel>
             <Style.Textarea
-              name='description' 
+              name='description'
               rows={3}
               onChange={e => setDescription(e.target.value)}
               value={description}
@@ -114,13 +114,13 @@ const CreateTransaction = () => {
         </Form.Group>
         <Form.Group>
           <ButtonToolbar style={{ float:'right' }}>
-            <Style.ButtonR  
+            <Style.ButtonR
               onClick={createTransaction}
             >
               Salvar
             </Style.ButtonR>
-            <Style.ButtonC  
-              appearance='ghost' 
+            <Style.ButtonC
+              appearance='ghost'
               onClick={() => navigate('/dashboard')}
             >
               Cancelar
