@@ -7,3 +7,7 @@ export interface Transaction {
   id_usuario?: number;
   data_criacao?: Date;
 }
+
+export interface ApiGetTransactionsResponse {
+    lista_transacoes: Array<Transaction>
+}

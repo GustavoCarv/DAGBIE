@@ -18,23 +18,23 @@ export const LastWeekTransactionsCard = (props: LastWeekProps) => {
         <Style.CardTitleHome>Última Semana</Style.CardTitleHome>
       </Style.TitleContainer>
       <Style.Container>
-        {props.transactions.length == 0 
-          ? <p 
+        {props.transactions.length == 0
+          ? <p
               style={{ textAlign: 'center', marginTop: 20, fontSize: '1.2rem' }}
             >
               Você ainda não possui transações
             </p>
-          : (props.transactions.map(t => (
-              <Style.TransactionLine>
+          : (props.transactions.map(transaction => (
+              <Style.TransactionLine key={transaction.id_transacao}>
                 <div className='value'>
-                  {t.tipo === 'Saída' 
+                  {transaction.tipo === 'Saída'
                     ? ( <SortUpIcon color='#F03737' style={{ fontSize: '1.3rem' }} /> )
                     : ( <SortDownIcon color='green' style={{ fontSize: '1.3rem' }} /> )
                   }
-                  <p>{formatNumberToCurrencyOutput(t.valor)}</p>
+                  <p>{formatNumberToCurrencyOutput(transaction.valor)}</p>
                 </div>
-                <p className='category'>{t.categoria}</p>
-                <p className='date'>{formatDate(t?.data_criacao)}</p>
+                <p className='category'>{transaction.categoria}</p>
+                <p className='date'>{formatDate(transaction?.data_criacao)}</p>
               </Style.TransactionLine>
             ))
           )
@@ -42,4 +42,4 @@ export const LastWeekTransactionsCard = (props: LastWeekProps) => {
       </Style.Container>
     </Style.ContainerGeneral>
   )
-} 
+}
